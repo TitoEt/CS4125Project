@@ -1,10 +1,10 @@
-public class IncreaseModifier extends PercentageModifier{
+public class IncreaseModifier extends PercentageModifier {
    
     public IncreaseModifier(double modifier) {
         super(modifier);
     }
 
     public double getModifier() {
-        return modifier;
+        return 1 + modifier;
     }
 }

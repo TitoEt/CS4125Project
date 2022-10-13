@@ -1,10 +1,10 @@
-public class ReduceModifier extends PercentageModifier{
+public class ReduceModifier extends PercentageModifier {
     
     public ReduceModifier(double modifier) {
         super(modifier);
     }
 
     public double getModifier() {
-        return modifier * -1.0;
+        return 1.0 - modifier;
     }
 }
