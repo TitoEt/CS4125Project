@@ -1,0 +1,37 @@
+package com.payment_gateway.stripe;
+import org.springframework.web.bind.annotation.RestController
+@RestController
+
+public class PaymentController {
+    static class CreatePayment {
+        @SerializedName("items")
+        Object[] items;
+    
+        public Object[] getItems() {
+          return items;
+        }
+      }
+    
+      static class CreatePaymentResponse {
+        private String clientSecret;
+        public CreatePaymentResponse(String clientSecret) {
+          this.clientSecret = clientSecret;
+        }
+      }
+    
+    @PostMapping("/create-payment-intent")
+    public CreatePaymentResponse createPaymentIntent(@RequestBody CreatePaymnet createPayment) throws StripeException {
+         PaymentIntentCreateParams params createParams = new PaymentIntentCreateParams.Builder()
+                .setAmount(15 * 100L)//create payment - payment calculator to be inserted here to calculate patients bill
+                .setCurrency("eur") 
+                .build();
+      
+            // Create a PaymentIntent with the order amount and currency
+            PaymentIntent intent = PaymentIntent.create(createParams);
+      
+            return new CreatePaymentResponse(intent.getClientSecret());
+            
+          }
+
+    }
+}
