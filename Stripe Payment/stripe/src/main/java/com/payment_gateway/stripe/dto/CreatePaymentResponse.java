@@ -1,8 +1,6 @@
 package com.payment_gateway.stripe.dto;
 
-public class CreatePaymentResponse {
+static class CreatePaymentResponse {
     private String clientSecret;
-
-    public String createPaymentResponse(String clientSecret) {return this.clientSecret;}
-    
-}
+    public CreatePaymentResponse(String clientSecret) { this.clientSecret = clientSecret;}
+  }
