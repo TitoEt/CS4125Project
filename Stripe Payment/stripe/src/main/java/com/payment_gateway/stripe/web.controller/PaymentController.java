@@ -1,5 +1,12 @@
-package com.payment_gateway.stripe;
-import org.springframework.web.bind.annotation.RestController
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.annotations.SerializedName;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
+import com.stripe.param.PaymentIntentCreateParams;
 @RestController
 
 public class PaymentController {
@@ -20,8 +27,8 @@ public class PaymentController {
       }
     
     @PostMapping("/create-payment-intent")
-    public CreatePaymentResponse createPaymentIntent(@RequestBody CreatePaymnet createPayment) throws StripeException {
-         PaymentIntentCreateParams params createParams = new PaymentIntentCreateParams.Builder()
+    public CreatePaymentResponse createPaymentIntent(@RequestBody CreatePayment createPayment) throws StripeException {
+         PaymentIntentCreateParams params; PaymentIntentCreateParams createParams = new PaymentIntentCreateParams.Builder()
                 .setAmount(15 * 100L)//create payment - payment calculator to be inserted here to calculate patients bill
                 .setCurrency("eur") 
                 .build();
@@ -34,4 +41,4 @@ public class PaymentController {
           }
 
     }
-}
+  
