@@ -3,7 +3,7 @@ package com.castletroymedical.billing;
 public class InsuredInvoice extends Invoice {
 
   public InsuredInvoice() {
-    super(new InsuredPatientStrategy());
+    super(new InsuredPatientState());
   }
 
   public double getCharge() {

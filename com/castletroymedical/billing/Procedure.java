@@ -1,16 +1,16 @@
 package com.castletroymedical.billing;
 
 public class Procedure extends InvoiceDecorator {
-  private static double charge = 40; // TODO
+  private static double charge = 40; // TODO retrive from db
   private String name;
   
   public Procedure(String name, Invoice invoice){
-    super(invoice, invoice.strategy);
+    super(invoice, invoice.state);
     this.name = name;
   }
 
   public double getCharge(){
-    return super.getCharge() + this.strategy.calculateProcedureCost(charge);
+    return super.getCharge() + this.state.calculateProcedureCost(charge);
   }
 
   private static double getProcedureCharge(){
