@@ -5,17 +5,16 @@ public class Monitoring extends InvoiceDecorator {
   private static final double charge = 50.0;
   
   public Monitoring(Invoice invoice){
-    super(invoice, charge);
+    super(invoice, invoice.strategy);
     this.days = 1;
   }
 
   public Monitoring(int days, Invoice invoice){
-    super(invoice, charge);
+    super(invoice, invoice.strategy);
     this.days = days;
   }  
 
   public double getCharge(){
-    //return super.getCharge() + (charge * days * getMonitoringModifier());
-    return super.getCharge();// + (charge * days * super.getModifier());
+    return super.getCharge() + this.strategy.calculateMonitoringFee(charge, days);
   }
 }
