@@ -1,4 +1,4 @@
-package hbillsystem.src.main.java.com.castletroymedical.database;
+package com.castletroymedical.database;
 
 import com.castletroymedical.database.data.PatientDTO;
 

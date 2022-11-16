@@ -1,4 +1,4 @@
-package hbillsystem.src.main.java.com.castletroymedical.database.data;
+package com.castletroymedical.database.data;
 public class AdminDTO {
     private String email;
     private String password;

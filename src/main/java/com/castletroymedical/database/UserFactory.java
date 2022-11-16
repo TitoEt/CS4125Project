@@ -1,4 +1,4 @@
-package hbillsystem.src.main.java.com.castletroymedical.database;
+package com.castletroymedical.database;
 public class UserFactory {
     public User getUser(String userType){
 
