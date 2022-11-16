@@ -1,13 +1,13 @@
-package hospitalbillingcom.example.hbillsystem;
+package com.castletroymedical;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HbillsystemApplication {
+public class HospitalBillSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HbillsystemApplication.class, args);
+		SpringApplication.run(HospitalBillSystemApplication.class, args);
 	}
 
 }

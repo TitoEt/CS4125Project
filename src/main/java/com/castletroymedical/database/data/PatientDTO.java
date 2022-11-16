@@ -1,4 +1,4 @@
-package com.castletroymedical.database.data;
+package hbillsystem.src.main.java.com.castletroymedical.database.data;
 import java.sql.Date;
 
 public class PatientDTO {
