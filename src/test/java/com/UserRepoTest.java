@@ -1,4 +1,4 @@
-package com.castletroymedical.database;
+package com;
 
 import com.castletroymedical.database.data.PatientDTO;
 

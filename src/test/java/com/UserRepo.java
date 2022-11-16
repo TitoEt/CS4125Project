@@ -1,4 +1,4 @@
-package com.castletroymedical.database.data;
+package com;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
