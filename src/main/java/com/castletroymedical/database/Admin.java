@@ -1,12 +1,13 @@
 package com.castletroymedical.database;
 
 import java.sql.Date;
-import com.castletroymedical.database.data.AdminDTO;
-import com.castletroymedical.database.data.PatientDTO;
+
+import com.castletroymedical.database.entity.AdminEntity;
+import com.castletroymedical.database.entity.PatientEntity;
 
 
 public class Admin extends User {
-    AdminDTO a;
+    AdminEntity a;
 
     public boolean login(String email, String password) {
         // account verification, exception handling
@@ -18,9 +19,9 @@ public class Admin extends User {
     public void registerNewPatient(String patientType, String name, Date dob,String ppsn, String address, int phoneNumber, String email){
         patientType.toLowerCase();
         switch (patientType) {
-            case "private": PatientDTO.createPrivatePatient(name, dob, ppsn, address, phoneNumber, email); break;
-            case "medical card": PatientDTO.createMedicalCardPatient(name, dob, ppsn, address, phoneNumber, email); break;
-            case "insured": PatientDTO.createInsuredPatient(name, dob, ppsn, address, phoneNumber, email); break;
+            case "private": PatientEntity.createPrivatePatient(name, dob, ppsn, address, phoneNumber, email); break;
+            case "medical card": PatientEntity.createMedicalCardPatient(name, dob, ppsn, address, phoneNumber, email); break;
+            case "insured": PatientEntity.createInsuredPatient(name, dob, ppsn, address, phoneNumber, email); break;
             // default: throws an exception;
         }
     }
