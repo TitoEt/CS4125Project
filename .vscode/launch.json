@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-StripeApplication<stripe>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.payment_gateway.stripe.StripeApplication",
+            "projectName": "stripe",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

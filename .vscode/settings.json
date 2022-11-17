@@ -1,5 +1,8 @@
 {
+    
+    "files.autoSave": "afterDelay",
     "java.configuration.updateBuildConfiguration": "interactive",
+"java.project.sourcePaths": ["Stripe Payment"],
 
     "sqltools.connections": [
         {
@@ -17,4 +20,5 @@
             "password": "asd123qwe"
         }
     ]
+
 }
