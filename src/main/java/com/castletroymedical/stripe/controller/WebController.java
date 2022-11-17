@@ -1,4 +1,4 @@
-package com.payment_gateway.stripe.controller;
+package com.castletroymedical.stripe.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

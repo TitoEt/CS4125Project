@@ -1,13 +1,13 @@
-package com.payment_gateway.stripe.controller;
+package com.castletroymedical.stripe.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.payment_gateway.stripe.dto.CreatePayment;
-import com.payment_gateway.stripe.dto.CreatePaymentResponse;
-import com.stripe.exception.StripeException;
-import com.stripe.model.PaymentIntent;
+import com.castletroymedical.stripe.dto.CreatePayment;
+import com.castletroymedical.stripe.dto.CreatePaymentResponse;
+import com.castletroymedical.stripe.controller.exception.StripeException;
+import com.castletroymedical.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 
 @RestController

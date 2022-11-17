@@ -1,4 +1,4 @@
-package com.payment_gateway.stripe.dto;
+package com.castletroymedical.stripe.dto;
 import com.google.gson.annotations.SerializedName;
 
 public class CreatePayment {

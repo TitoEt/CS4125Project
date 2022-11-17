@@ -1,4 +1,4 @@
-package com.payment_gateway.stripe;
+package com.castletroymedical.jpa.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
