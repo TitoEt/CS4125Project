@@ -1,3 +1,5 @@
+package com.payment_gateway.stripe.controller;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
