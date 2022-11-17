@@ -35,7 +35,7 @@ async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
 
-  const { error } = await stripe.confirmPayment({
+  const { error } = await Stripe.confirmPayment({
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
