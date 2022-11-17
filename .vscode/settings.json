@@ -1,0 +1,20 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "castletroymedicaldb",
+            // "group": "22235",
+            "database": "castletroymedicaldb",
+            "username": "root",
+            "password": "asd123qwe"
+        }
+    ]
+}

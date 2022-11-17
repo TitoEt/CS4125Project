@@ -1,5 +1,5 @@
 package com.castletroymedical.database;
-import com.castletroymedical.database.data.PatientDTO;
+import com.castletroymedical.database.entity.PatientEntity;
 
 public abstract class User {
 
@@ -11,28 +11,28 @@ public abstract class User {
 
     //view details
 
-    public void updatePatientAddress(PatientDTO p, String address){
+    public void updatePatientAddress(PatientEntity p, String address){
         p.setAddress(address);
 
     }
 
-    public void updatePatientName(PatientDTO p, String name){
+    public void updatePatientName(PatientEntity p, String name){
         p.setName(name);
     }
 
-    public void updatePatientEmail(PatientDTO p, String email){
+    public void updatePatientEmail(PatientEntity p, String email){
         p.setEmail(email);
     }
 
-    public void updatePatientNumber(PatientDTO p, int number){
+    public void updatePatientNumber(PatientEntity p, int number){
         p.setPhoneNumber(number);
     }
     
-    public void updatePatientMedicalCardStatus(PatientDTO p, boolean status){
+    public void updatePatientMedicalCardStatus(PatientEntity p, boolean status){
         p.setMedicalCardHolder(status);
     }
 
-    public void updatePatientInsuranceStatus(PatientDTO p, boolean insurance){
+    public void updatePatientInsuranceStatus(PatientEntity p, boolean insurance){
         p.setMedicalCardHolder(insurance);
     } 
 

@@ -1,9 +1,9 @@
 package com.castletroymedical.database;
 
-import com.castletroymedical.database.data.PatientDTO;
+import com.castletroymedical.database.entity.PatientEntity;
 
 public class Patient extends User{
-    PatientDTO p; 
+    PatientEntity p; 
 
     public boolean login(String email, String password) {
         // account verification, exception handling
