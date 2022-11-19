@@ -17,8 +17,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Maven Build
-        run: mvn clean install
-
-      - name: Run application
-        run: java HospitalBillSystemApplication.java
-        working-directory: src/main/java/com/castletroymedical
+        run: mvn clean compile
