@@ -7,8 +7,8 @@ public class Appointment {
     private int patientID;
     private String procedure;
     private LocalDateTime time;
-    private DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm"); 
-    private DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+    private final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm"); 
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
 
     public Appointment() {
         this.time = LocalDateTime.now(); 
