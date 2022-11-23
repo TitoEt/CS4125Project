@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch StripePaymentsApplication",
+            "request": "launch",
+            "mainClass": "com.castletroymedical.stripe.StripePaymentsApplication",
+            "projectName": "hospitalbillsystem"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-StripeApplication<stripe>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
