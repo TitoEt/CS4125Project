@@ -4,11 +4,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.castletroymedical.stripe.controller.exception.StripeException;
+
 import com.castletroymedical.stripe.dto.CreatePayment;
 import com.castletroymedical.stripe.dto.CreatePaymentResponse;
-import com.castletroymedical.stripe.controller.model.PaymentIntent;
-import com.stripe.param.PaymentIntentCreateParams;
+
 
 @RestController
 

@@ -62,6 +62,7 @@ var payWithCard = function(stripe, card, clientSecret) {
   loading(true);
   stripe
     .confirmCardPayment(clientSecret, {
+      receipt_email: document.getElementById('email').value,
       payment_method: {
         card: card
       }

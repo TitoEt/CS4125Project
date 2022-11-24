@@ -122,8 +122,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-	</dependencies>
+		 <dependency>
+          <groupId>com.stripe</groupId>
+          <artifactId>stripe-java</artifactId>
+          <version>9.11.0</version>
+        </dependency>
+ 
+ </dependencies>
 
 	<build>
 		<plugins>
