@@ -2,12 +2,18 @@ package com.castletroymedical.billing;
 
 import com.castletroymedical.billing.invoice.Consultation;
 import com.castletroymedical.billing.invoice.Invoice;
+import com.castletroymedical.billing.invoice.MedicalCardInvoice;
 import com.castletroymedical.billing.invoice.Monitoring;
 import com.castletroymedical.billing.invoice.PrivateRoom;
 import com.castletroymedical.billing.invoice.Procedure;
 import com.castletroymedical.billing.invoice.WardBed;
 
 public class InvoiceBuilder extends Builder {
+    
+    public InvoiceBuilder(){
+        // <ISHA> I can't have the abstract classes here :( it needs to be concreeeete
+        this.invoice = new MedicalCardInvoice();
+    }
 
     @Override
     public void buildConsultation() {
@@ -52,6 +58,6 @@ public class InvoiceBuilder extends Builder {
     @Override
     public Invoice getInvoice() { 
         return this.invoice;
-    }  
+    }
 
 }
