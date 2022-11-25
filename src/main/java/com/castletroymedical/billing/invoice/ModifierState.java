@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public abstract class ModifierState {
     public abstract double calculateProcedureCost(double baseCost);

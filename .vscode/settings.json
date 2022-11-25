@@ -14,7 +14,6 @@
             "port": 3306,
             "driver": "MySQL",
             "name": "castletroymedicaldb",
-            // "group": "22235",
             "database": "castletroymedicaldb",
             "username": "root",
             "password": "asd123qwe"
