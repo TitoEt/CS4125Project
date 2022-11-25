@@ -12,7 +12,7 @@ import com.castletroymedical.database.repository.PatientRepository;
 @Service
 public class PatientService {
 
-    @Autowired
+    // @Autowired Temporarily removing until find resolution
     PatientRepository repository;
 
     // <ISHA> Going to read more about Optional later
