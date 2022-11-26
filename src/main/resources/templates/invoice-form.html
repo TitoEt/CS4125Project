@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Generate Invoice </title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script th:src="@{/form.js}"></script>
+</head> 
+<body>
+    <h2>Calculate Patient Invoice</h2>
+    <form action="#" th:action="@{/displayInvoice}" th:object="${bill}" method="post">
+        <label for="name">Patient name</label>
+        <br>
+        <input type="text" id="name" name="name" th:value="${name}" readonly> 
+        <br>
+        <label for="ppsn">PPSN</label>
+        <br>
+        <input type="text" id="ppsn" name="ppsn" th:value="${ppsn}" readonly>
+        <br>
+
+        <label for="procedureList">Procedure</label>
+        <br>
+        <select name="procedureList">
+            <option th:each="procedure: ${procedures}" th:value="${procedure.name}" th:text="${procedure.name}"></option>
+        </select>
+        <br>
+
+        <label for="stay">Did the patient stay overnight?</label>
+        <input type="radio" id="stayYes" name="stay" value="Yes" onclick="enableStayQuestions()">
+        <label for="stayYes">Yes</label>
+        <input type="radio" id="stayNo" name="stay" value="No" onclick="disableStayQuestions()">
+        <label for="stayNo">No</label>
+        <br>        
+        <label for="stayDuration">Duration of stay</label>
+        <br>
+        <input type="number" id="stayDuration" name="stayDuration" min="1">
+        <br>
+
+        <label for="monitoring">Did the patient require monitoring?</label>
+        <input type="radio" id="monitoringYes" name="monitoring" value="Yes" onclick="enableMonitoringQuestion()">
+        <label for="monitoringYes">Yes</label>
+        <input type="radio" id="monitoringNo" name="monitoring" value="No" onclick="disableMonitoringQuestion()">
+        <label for="monitoringNo">No</label>
+        <br>
+        <label for="monitoringDuration">Duration of monitoring</label>
+        <br>
+        <input type="number" id="monitoringDuration" name="monitoringDuration" min="1">
+        <br>        
+        
+        <br>
+        <input type="submit" value="Generate Invoice">
+    </form>
+</body>
+</html>

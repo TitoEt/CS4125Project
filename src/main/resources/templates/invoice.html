@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Patient Invoice </title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head> 
+<body>
+    <!-- TODO Format price -->
+    <h2>Invoice amounts to € <span th:text="${invoiceAmount}"></span></h2> 
+
+    <form action="#" method="post">
+        <label for="payment">Payment Method</label>
+        <input type="radio" id="cash" name="payment" value="cash">
+        <label for="cash">Cash</label>
+        <input type="radio" id="card" name="payment" value="card">
+        <label for="card">Card</label>
+        <input type="radio" id="instalment" name="payment" value="instalment">
+        <label for="card">Instalment</label>
+        <br>
+        <br>
+        <input type="submit" value="Proceed">
+    </form>
+    
+</body>
+</html>
