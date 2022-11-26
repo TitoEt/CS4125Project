@@ -1,13 +1,13 @@
-// package com.castletroymedical.jpa.test;
+package com.castletroymedical.jpa.test;
 
-// import org.junit.jupiter.api.Test;
-// import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-// @SpringBootTest
-// class StripeApplicationTests {
+@SpringBootTest
+class StripeApplicationTests {
 
-// 	@Test
-// 	void contextLoads() {
-// 	}
+	@Test
+	void contextLoads() {
+	}
 
-// }
+}
