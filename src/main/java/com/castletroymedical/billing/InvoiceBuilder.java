@@ -1,18 +1,33 @@
 package com.castletroymedical.billing;
 
 import com.castletroymedical.billing.invoice.Consultation;
+import com.castletroymedical.billing.invoice.InsuredInvoice;
 import com.castletroymedical.billing.invoice.Invoice;
 import com.castletroymedical.billing.invoice.MedicalCardInvoice;
 import com.castletroymedical.billing.invoice.Monitoring;
+import com.castletroymedical.billing.invoice.PrivateInvoice;
 import com.castletroymedical.billing.invoice.PrivateRoom;
 import com.castletroymedical.billing.invoice.Procedure;
 import com.castletroymedical.billing.invoice.WardBed;
 
 public class InvoiceBuilder extends Builder {
     
-    public InvoiceBuilder(){
-        // <ISHA> I can't have the abstract classes here :( it needs to be concreeeete
-        this.invoice = new MedicalCardInvoice();
+    public InvoiceBuilder(String type){ 
+        this.invoice = invoiceFactory(type);
+    }
+
+    public Invoice invoiceFactory(String type){
+        if(type == null || type.isEmpty())
+            return null;
+
+        Invoice out;
+        type = type.toLowerCase();
+        switch(type) {
+            case "insured": out = new InsuredInvoice(); break;
+            case "medical card": out = new MedicalCardInvoice(); break;
+            default: out = new PrivateInvoice(); break;
+        }
+        return out;
     }
 
     @Override
