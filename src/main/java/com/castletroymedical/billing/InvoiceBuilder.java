@@ -19,15 +19,15 @@ public class InvoiceBuilder {
     }
 
     public Invoice invoiceFactory(String type){
+        Invoice out = null;
         if(type == null || type.isEmpty())
-            return null;
-
-        Invoice out;
+            return out;
+    
         type = type.toLowerCase();
         switch(type) {
             case "insured": out = new InsuredInvoice(); break;
             case "medical card": out = new MedicalCardInvoice(); break;
-            default: out = new PrivateInvoice(); break;
+            case "private": out = new PrivateInvoice(); break;
         }
         return out;
     }
