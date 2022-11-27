@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - test_branch
+      - branch-*
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
