@@ -11,21 +11,26 @@
 <body>
     <h2>Calculate Patient Invoice</h2>
 
-    <form action="#" th:action="@{/displayInvoice}" method="post">
+    <form action="#" th:action="@{/displayInvoice}" th:object="${invoiceForm}" method="post">
         <label for="name">Patient name</label>
         <br>
-        <input type="text" id="name" name="name" th:value="${name}" readonly> 
+        <input type="text" th:value="${invoiceForm.name}" readonly> 
         <br>
         <label for="ppsn">PPSN</label>
         <br>
-        <input type="text" id="ppsn" name="ppsn" th:value="${ppsn}" readonly>
+        <input type="text" th:value="${invoiceForm.ppsn}" readonly>
         <br>
 
         <label for="procedureList">Procedure</label>
         <br>
-        <select name="procedureList">
+        <select name="procedureList" th:field="*{procedure}">
+            <option value="" selected> --- Select a procedure --- </option>
             <option th:each="procedure: ${procedures}" th:value="${procedure.name}" th:text="${procedure.name}"></option>
         </select>
+        <br>
+
+        <label for="consultation">Did the patient have a consultation?</label>
+        <input type="checkbox" id="consultation" name="consultation" th:checked="*{consultation}" />
         <br>
 
         <label for="stay">Did the patient stay overnight?</label>
@@ -36,14 +41,14 @@
         <br>
         <label for="bedType">Please provide the room type</label>
         <br>
-        <input type="radio" id="privateRoom" name="room" value="Private Room">
+        <input type="radio" id="privateRoom" name="room" th:field="*{bedType}" value="Private Room">
         <label for="privateRoom">Private Room</label>
-        <input type="radio" id="wardBed" name="room" value="Ward Bed">
+        <input type="radio" id="wardBed" name="room" th:field="*{bedType}" value="Ward Bed">
         <label for="wardBed">Ward Bed</label>
         <br>
         <label for="stayDuration">Duration of stay</label>
         <br>
-        <input type="number" id="stayDuration" name="stayDuration" min="1">
+        <input type="number" id="stayDuration" name="stayDuration" th:field="*{stayDuration}" min="1">
         <br>
 
         <label for="monitoring">Did the patient require monitoring?</label>
@@ -54,8 +59,8 @@
         <br>
         <label for="monitoringDuration">Duration of monitoring</label>
         <br>
-        <input type="number" id="monitoringDuration" name="monitoringDuration"  min="1">
-        <br>     
+        <input type="number" id="monitoringDuration" name="monitoringDuration" th:field="*{monitoringDuration}" min="1">
+        <br>  
         <br>
         <input type="submit" value="Generate Invoice">
     </form>
