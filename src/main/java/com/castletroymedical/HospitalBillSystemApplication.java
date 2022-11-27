@@ -9,11 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EnableJpaRepositories("database.repository")
 @ComponentScan(basePackages={"database.*"})
-@EntityScan("database.entity")   
+@EntityScan("database.entity")
 public class HospitalBillSystemApplication {
-
 	public static void main(String[] args) {
-		SpringApplication.run(HospitalBillSystemApplication.class, args);
+		SpringApplication.run(HospitalBillSystemApplication.class, args); 
 	}
-
 }
