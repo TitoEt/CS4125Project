@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public class Consultation extends InvoiceDecorator {
   private static final double charge = 30.0;

@@ -1,21 +1,20 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
-public class InsuredPatientState extends ModifierState{
+public class PrivatePatientState extends ModifierState{
 
     public double calculateProcedureCost(double baseCost) {
-        return baseCost * 1.2;
+        return baseCost;
     }
 
     public double calculateConsultationFee(double baseCost) {
-        return baseCost * 1.25;
+        return baseCost;
     }
 
     public double calculateMonitoringFee(double baseCost, int days) {
-        return (baseCost * 1.05) * days ;
+        return baseCost * days ;
     }
 
     public double calculateBedRate(double baseCost, int days) {
-        return (baseCost * 1.2) * days;
+        return baseCost * days;
     }
- 
 }

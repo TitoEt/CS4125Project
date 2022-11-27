@@ -1,4 +1,6 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
+
+import com.castletroymedical.billing.Bill;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

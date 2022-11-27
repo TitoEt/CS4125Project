@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public class Procedure extends InvoiceDecorator {
   private static double charge = 40; // TODO retrive from db

@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public class WardBed extends InvoiceDecorator {
     private int days; 
