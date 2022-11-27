@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public class PrivateRoom extends InvoiceDecorator { 
     private int days; 

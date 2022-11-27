@@ -1,4 +1,4 @@
-package com.castletroymedical.billing;
+package com.castletroymedical.billing.invoice;
 
 public class InvoiceDecorator extends Invoice {
   private Invoice invoice;
