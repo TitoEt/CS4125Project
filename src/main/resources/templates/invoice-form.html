@@ -10,7 +10,8 @@
 </head> 
 <body>
     <h2>Calculate Patient Invoice</h2>
-    <form action="#" th:action="@{/displayInvoice}" th:object="${bill}" method="post">
+
+    <form action="#" th:action="@{/displayInvoice}" method="post">
         <label for="name">Patient name</label>
         <br>
         <input type="text" id="name" name="name" th:value="${name}" readonly> 
@@ -32,7 +33,14 @@
         <label for="stayYes">Yes</label>
         <input type="radio" id="stayNo" name="stay" value="No" onclick="disableStayQuestions()">
         <label for="stayNo">No</label>
-        <br>        
+        <br>
+        <label for="bedType">Please provide the room type</label>
+        <br>
+        <input type="radio" id="privateRoom" name="room" value="Private Room">
+        <label for="privateRoom">Private Room</label>
+        <input type="radio" id="wardBed" name="room" value="Ward Bed">
+        <label for="wardBed">Ward Bed</label>
+        <br>
         <label for="stayDuration">Duration of stay</label>
         <br>
         <input type="number" id="stayDuration" name="stayDuration" min="1">
@@ -46,9 +54,8 @@
         <br>
         <label for="monitoringDuration">Duration of monitoring</label>
         <br>
-        <input type="number" id="monitoringDuration" name="monitoringDuration" min="1">
-        <br>        
-        
+        <input type="number" id="monitoringDuration" name="monitoringDuration"  min="1">
+        <br>     
         <br>
         <input type="submit" value="Generate Invoice">
     </form>
