@@ -4,14 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity 
-public class AdminEntity {
+public class Admin {
     @Id
     private String email;
     private String password;
 
-    protected AdminEntity(){}
+    protected Admin(){}
     
-    public AdminEntity(String email, String password) {
+    public Admin(String email, String password) {
         this.email = email;
         this.password = password;
     }
