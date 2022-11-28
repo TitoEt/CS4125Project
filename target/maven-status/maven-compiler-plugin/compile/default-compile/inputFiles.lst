@@ -1,10 +1,43 @@
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\controller\PatientController.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\entity\PatientEntity.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\Patient.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\Admin.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\UserFactory.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\repository\PatientRepository.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\HospitalBillSystemApplication.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\User.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\entity\AdminEntity.java
-C:\Users\lakei\IdeaProjects\CS4125Assignment\src\main\java\com\castletroymedical\database\service\PatientService.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\MedicalCardState.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\Procedure.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\Appointment.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\Invoice.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\entity\PatientEntity.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\HospitalBillSystemApplication.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\controller\PatientController.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\InvoiceDecorator.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\User.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\PrivateInvoice.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\Consultation.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\FreeService.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\PercentageModifier.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\InsuredPatientState.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\StandardRate.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\UserFactory.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\instalments\Instalment.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\DefaultModifier.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\stripe\dto\CreatePaymentResponse.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\WardBed.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\PrivateRoom.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\stripe\controller\PaymentController.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\ui\views\PatientView.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\ui\views\UserView.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\Patient.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\Admin.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\subscription\Subject.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\ui\views\AdminView.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\IncreaseModifier.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\InsuredInvoice.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\subscription\Observer.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\Monitoring.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\service\PatientService.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\ui\MainController.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\PrivatePatientState.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\MedicalCardInvoice.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\ModifierState.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\ui\notifications\AppointmentReminder.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\ReduceModifier.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\entity\AdminEntity.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\billing\Bill.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\stripe\dto\CreatePayment.java
+c:\Users\maeli\OneDrive\CS4125\CS4125 project\CS4125Project\src\main\java\com\castletroymedical\database\repository\PatientRepository.java

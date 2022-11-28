@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="global.css" />
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
-    <script th:inline="javascript">
-      var stripePublicKey = null;
-    </script>
     <script src="checkout.js" defer></script>
     
   </head>
@@ -19,7 +16,8 @@
   <body>
     <!-- Display a payment form -->
     <form id="payment-form">
-      <p><b>Castletroy Medical Payment Portal</b></p> 
+      <h2><b>Castletroy Medical Payment Portal</b></h2>
+      <p>Please enter below, the email address you would like your receipt sent to.</p>  
       <input type="text" id="email" placeholder="Email address" />
       <div id="card-element"><!--Stripe.js injects the Card Element--></div>
       <button id="submit">

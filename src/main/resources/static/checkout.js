@@ -1,5 +1,5 @@
 // This is your test publishable API key.
-var stripe = Stripe(stripePublicKey);
+var stripe = Stripe("pk_test_51LzLqMAjbSseX4yp7aLwDVsCQWugPNmLVtgiOvVTGTGAikl1tgHwHi0zxIDzWYc1SshKU52UMzwgjjkNltBtWHYE006yYmfuWD");
 
 // The items the customer wants to buy
 var purchase = {

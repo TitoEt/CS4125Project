@@ -2,9 +2,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch StripePaymentsApplication",
+            "name": "Launch HospitalBillSystemApplication",
             "request": "launch",
-            "mainClass": "com.castletroymedical.stripe.StripePaymentsApplication",
+            "mainClass": "com.castletroymedical.HospitalBillSystemApplication",
+            "projectName": "hospitalbillsystem"
+        },
+        {
+            "type": "java",
+            "name": "Launch HospitalBillSystemApplication",
+            "request": "launch",
+            "mainClass": "com.castletroymedical.stripe.HospitalBillSystemApplication",
             "projectName": "hospitalbillsystem"
         },
         {
@@ -12,8 +19,8 @@
             "name": "Spring Boot-StripeApplication<stripe>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.payment_gateway.stripe.StripeApplication",
-            "projectName": "stripe",
+            "mainClass": "com.castletroymedical.stripe.HospitalBillSystemApplication",
+            "projectName": "hospitalbillsystem",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
