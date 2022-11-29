@@ -1,4 +1,4 @@
-package com.castletroymedical.database.entity;
+package com.castletroymedical.entity;
 
 import javax.persistence.Entity;  
 import javax.persistence.Id;

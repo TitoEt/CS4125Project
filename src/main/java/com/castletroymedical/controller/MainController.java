@@ -1,14 +1,8 @@
-package com.castletroymedical.ui;
+package com.castletroymedical.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-// import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import com.castletroymedical.database.entity.Patient;
+import org.springframework.ui.Model; 
+import org.springframework.web.bind.annotation.GetMapping; 
 import com.castletroymedical.dto.PatientDto;
 import com.castletroymedical.service.PatientService;
 
@@ -30,11 +24,6 @@ public class MainController {
     public String showRegistrationForm(Model model){
         PatientDto patientDto = new PatientDto();
         model.addAttribute("patient", patientDto);
-        return "register";
-    }
-
-    @PostMapping("/reg")
-    public void addPatient(@RequestBody Patient patient){
-        patientService.savePatientBody(patient);
+        return "register"; 
     }
 }

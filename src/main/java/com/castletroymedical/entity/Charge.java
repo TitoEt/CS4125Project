@@ -1,4 +1,4 @@
-package com.castletroymedical.database.entity;
+package com.castletroymedical.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,11 +15,11 @@ import lombok.Setter;
 public class Charge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long charge_id;
+    private Long chargeId;
 
     @ManyToOne
-    @JoinColumn(name = "bill_id")
-    private Bill bill;
+    @JoinColumn(name = "billId")
+    private Bill billId;
 
     @Column(nullable = false)
     private String chargeType;

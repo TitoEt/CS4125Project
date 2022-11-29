@@ -1,4 +1,4 @@
-package com.castletroymedical.database.entity;
+package com.castletroymedical.entity;
 
 import java.sql.Date;
 
@@ -17,11 +17,11 @@ import lombok.Setter;
 public class InstalmentPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long payment_id;
+    private Long paymentId;
 
     @ManyToOne
-    @JoinColumn(name = "bill_id")
-    private Bill bill;
+    @JoinColumn(name = "billId")
+    private Bill billId;
 
     @Column(nullable = false)
     private double instalmentAmount;
