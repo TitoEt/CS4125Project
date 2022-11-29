@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.castletroymedical.dto.PatientDto;
-import com.castletroymedical.entity.Patient;
+import com.castletroymedical.entity.PatientEntity;
 import com.castletroymedical.repository.PatientRepository;
 import com.castletroymedical.service.PatientService;
 
@@ -17,7 +17,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void savePatient(PatientDto patientDto) {
-        Patient patient = new Patient(  patientDto.getPpsn(),
+        PatientEntity patient = new PatientEntity(  patientDto.getPpsn(),
                                         patientDto.getFirstName() + " " + patientDto.getLastName(),
                                         patientDto.getDob(),
                                         patientDto.getAddress(),
@@ -31,12 +31,12 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient findPatientByEmail(String email) { 
+    public PatientEntity findPatientByEmail(String email) { 
         return patientRepository.findByEmail(email);
     }
 
     @Override
-    public String getPatientType(Patient patient) {
+    public String getPatientType(PatientEntity patient) {
         String type = "private";
         if(patient.isMedicalCardHolder() && !patient.isInsured()) type = "medical card";
         if(!patient.isMedicalCardHolder() && patient.isInsured()) type = "insured";
@@ -46,13 +46,13 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<PatientDto> findAllPatients() {
-        List<Patient> patients = patientRepository.findAll();
+        List<PatientEntity> patients = patientRepository.findAll();
         return patients.stream()
                 .map((patient) -> mapToPatientDto(patient))
                 .collect(Collectors.toList());
     }
 
-    private PatientDto mapToPatientDto(Patient patient){
+    private PatientDto mapToPatientDto(PatientEntity patient){
         PatientDto patientDto = new PatientDto();
         
         String[] nameSplit = patient.getName().split(" ");

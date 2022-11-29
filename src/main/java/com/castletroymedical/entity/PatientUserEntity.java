@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "patient_user")
-public class PatientUser {
+public class PatientUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
@@ -27,7 +27,7 @@ public class PatientUser {
     //<ISHA> FK = ppsn
     @OneToOne
     @JoinColumn(name = "ppsn")
-    private Patient patientPpsn;
+    private PatientEntity patientPpsn;
 
     //<ISHA> Table for all bills for all patients
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -40,5 +40,5 @@ public class PatientUser {
             @JoinColumn(name = "billId", referencedColumnName = "billId")
         }
     )
-    private List<Bill> bills = new ArrayList<>();
+    private List<BillEntity> bills = new ArrayList<>();
 }

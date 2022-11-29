@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="patient")
-public class Patient {
+public class PatientEntity {
     @Id 
     private String ppsn;
 

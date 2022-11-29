@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.castletroymedical.entity.HospitalProcedure;
+import com.castletroymedical.entity.HospitalProcedureEntity;
 import com.castletroymedical.service.impl.HospitalProcedureServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,7 +25,7 @@ public class ProcedureController {
     }
 
     @GetMapping("/all")
-    public List<HospitalProcedure> getAllProcedures(){
+    public List<HospitalProcedureEntity> getAllProcedures(){
         return procedureService.getAllProcedures();
     }
 
@@ -35,17 +35,17 @@ public class ProcedureController {
     // }
 
     @GetMapping("/{procedureId}")
-    public Optional<HospitalProcedure> getHospitalProcedure(@PathVariable("procedureId") Long procedureId){
+    public Optional<HospitalProcedureEntity> getHospitalProcedure(@PathVariable("procedureId") Long procedureId){
         return procedureService.getHospitalProcedure(procedureId);
     }
 
     @PostMapping("/add-procedure")
-    public void addProcedure(@RequestBody HospitalProcedure hospitalProcedure) {
+    public void addProcedure(@RequestBody HospitalProcedureEntity hospitalProcedure) {
          procedureService.saveOrUpdateProcedure(hospitalProcedure);
     }
 
     @PutMapping("/update-procedure")
-    public void updateProcedure(@RequestBody HospitalProcedure hospitalProcedure){
+    public void updateProcedure(@RequestBody HospitalProcedureEntity hospitalProcedure){
         procedureService.saveOrUpdateProcedure(hospitalProcedure);
     }
     

@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 // import com.castletroymedical.dto.ProcedureDto;
-import com.castletroymedical.entity.HospitalProcedure;
+import com.castletroymedical.entity.HospitalProcedureEntity;
 import com.castletroymedical.repository.HospitalProcedureRepository;
 import com.castletroymedical.service.HospitalProcedureService;
 
@@ -29,7 +29,7 @@ public class HospitalProcedureServiceImpl implements HospitalProcedureService {
     // }
 
     @Override
-    public List<HospitalProcedure> getAllProcedures() {
+    public List<HospitalProcedureEntity> getAllProcedures() {
         return procedureRepository.findAll();
     }
 
@@ -41,19 +41,19 @@ public class HospitalProcedureServiceImpl implements HospitalProcedureService {
     // }
 
     @Override
-    public void saveOrUpdateProcedure(HospitalProcedure procedure) {
+    public void saveOrUpdateProcedure(HospitalProcedureEntity procedure) {
         procedureRepository.save(procedure);
     }
 
     @Override
-    public Optional<HospitalProcedure> getHospitalProcedure(Long id) {
+    public Optional<HospitalProcedureEntity> getHospitalProcedure(Long id) {
         return procedureRepository.findById(id);
     }
 
     @Override
     public double getProcedureCharge(Long id) {
         double charge = -1.0;
-        Optional<HospitalProcedure> hp = procedureRepository.findById(id);
+        Optional<HospitalProcedureEntity> hp = procedureRepository.findById(id);
         if(hp.isPresent()){
             charge = hp.get().getBaseCharge(); 
         }

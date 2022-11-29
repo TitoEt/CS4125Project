@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 // import com.castletroymedical.dto.ProcedureDto;
-import com.castletroymedical.entity.HospitalProcedure;
+import com.castletroymedical.entity.HospitalProcedureEntity;
 
 public interface HospitalProcedureService {
     // HospitalProcedure findProcedureByProcedureName(String name);
-    Optional<HospitalProcedure> getHospitalProcedure(Long id);
+    Optional<HospitalProcedureEntity> getHospitalProcedure(Long id);
     // List<ProcedureDto> findAllProcedures();
-    List<HospitalProcedure> getAllProcedures();
+    List<HospitalProcedureEntity> getAllProcedures();
     double getProcedureCharge(Long id);
-    void saveOrUpdateProcedure(HospitalProcedure procedure);
+    void saveOrUpdateProcedure(HospitalProcedureEntity procedure);
 }

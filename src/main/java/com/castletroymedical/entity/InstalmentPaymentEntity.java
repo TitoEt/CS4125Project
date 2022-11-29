@@ -14,14 +14,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "instalment_payment")
-public class InstalmentPayment {
+public class InstalmentPaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
 
     @ManyToOne
     @JoinColumn(name = "billId")
-    private Bill billId;
+    private BillEntity billId;
 
     @Column(nullable = false)
     private double instalmentAmount;

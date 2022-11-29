@@ -11,15 +11,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "hospital_procedure")
-public class HospitalProcedure { 
+@Table(name = "charge")
+public class ChargeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long procedureId;
+    private Long chargeId;
+
+    @ManyToOne
+    @JoinColumn(name = "billId")
+    private BillEntity billId;
 
     @Column(nullable = false)
-    private String procedureName;
+    private String chargeType;
 
     @Column(nullable = false)
-    private double baseCharge;
-} 
+    private double chargeAmount;
+
+}
