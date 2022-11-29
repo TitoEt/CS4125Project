@@ -7,28 +7,29 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head> 
 <body>
-    <h2>Invoice amounts to € <span th:text="${total}"></span></h2> 
+    <h2>Invoice amounts to €<span th:text="${bill.amount}"></span></h2> 
 
     <h3>Invoice Details</h3>
-    <p>Name <span th:text="${invoiceForm.name}"></span></p> 
-    <p>PPSN <span th:text="${invoiceForm.ppsn}"></span></p> 
-    <p>Procedure performed <span th:text="${invoiceForm.procedure}"></span></p> 
-    <p>Consultation <span th:text="${invoiceForm.consultation}"></span></p> 
-    <p>Type of bed <span th:text="${invoiceForm.bedType}"></span></p>
-    <p>Bed days <span th:text="${invoiceForm.stayDuration}"></span></p> 
-    <p>Monitoring days <span th:text="${invoiceForm.monitoringDuration}"></span></p> 
+    <p>Name <span th:text="${invoiceDetails.name}"></span></p> 
+    <p>PPSN <span th:text="${invoiceDetails.ppsn}"></span></p> 
+    <h4>Charges</h4>
+    <table>
+        <tr th:each="charge: ${charges}">
+            <td th:text="${charge.description}"></td>
+            <td th:text="${charge.formatAmount()}"></td>
+        </tr>
+    </table>
+    
+    <br>
+    <h4>Payment Options</h4>
 
-    <form action="#" method="post">
-        <label for="payment">Payment Method</label>
-        <input type="radio" id="cash" name="payment" value="Cash">
-        <label for="cash">Cash</label>
-        <input type="radio" id="card" name="payment" value="Card">
-        <label for="card">Card</label>
-        <input type="radio" id="instalment" name="payment" value="instalment">
-        <label for="card">Instalment</label>
+    <form action="#" th:action="@{/paymentMethod}" th:object="${bill}" method="post">
+        <label for="payment">Patient's Preferred Payment Method</label>
         <br>
-        <br>
-        <input type="submit" value="Proceed">
+        <input type="hidden" th:value="${bill.amount}" name="amount">
+        <input type="submit" name="cash" value="Cash">
+        <input type="submit" name="onlinePayment" value="Online Payment">
+        <input type="submit" name="instalment" value="Instalment">        
     </form>
     
 </body>

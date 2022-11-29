@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Accept Cash Payment </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head> 
+<body>
+    <h2>Confirm received cash to the value of €<span th:text="${amount}"></span></h2>
+
+    <form method="get" action="/admin/dashboard">
+        <input type="submit" value="Back to Dashboard">
+    </form>
+    <!-- TODO add a go back option -->
+</body>
+</html>

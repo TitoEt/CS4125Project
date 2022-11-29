@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Patient Instalment Plan </title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head> 
+<body>
+    <h3>Instalment Plan Details</h3>
+    <p>Total Amount <span th:text="${total}"></span></p> 
+    <h4>Schedule</h4>
+    <table>
+        <tr th:each="instalment: ${instalments}">
+            <td th:text="${instalment.dateDue}"></td>
+            <td th:text="${instalment.instalmentAmount}"></td>
+        </tr>
+    </table>
+</body>
+</html>
