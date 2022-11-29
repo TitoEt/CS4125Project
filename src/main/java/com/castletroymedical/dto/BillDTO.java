@@ -14,4 +14,8 @@ public class BillDTO {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    public String toString() {
+        return String.format("€%.2f", this.amount);
+    }
 }  

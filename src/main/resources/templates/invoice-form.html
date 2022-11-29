@@ -10,10 +10,10 @@
 <body>
     <h2>Calculate Patient Invoice</h2>
 
-    <form action="#" th:action="@{/displayInvoice}" th:object="${invoiceDetails}" method="post">
-        <p>Patient Name <span th:text="${invoiceDetails.name}"></span></p>
-        <p>PPSN <span th:text="${invoiceDetails.ppsn}"></span></p>
-        <p>Patient Type <span th:text="${invoiceDetails.patientType}"></span></p>
+    <form action="#" th:action="@{/admin/displayInvoice}" th:object="${invoiceDetails}" method="post">
+        <p>Patient Name: <span th:text="${#strings.capitalize(invoiceDetails.name)}"></span></p>
+        <p>PPSN: <span th:text="${invoiceDetails.ppsn}"></span></p>
+        <p>Patient Type: <span th:text="${#strings.capitalize(invoiceDetails.patientType)}"></span></p>
 
         <label for="procedureList">Procedure</label>
         <br>

@@ -28,7 +28,7 @@ public class BillingController {
     @Autowired
     PatientService patientService; // TODO service gets patient and type
 
-    @GetMapping("/generateInvoice/{ppsn}")
+    @GetMapping("/admin/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
         model.addAttribute("invoiceDetails", new InvoiceDetailsDTO("name", ppsn, "private"));
         
@@ -40,9 +40,10 @@ public class BillingController {
         return "invoice-form";
     }
 
-    @PostMapping("/displayInvoice")
+    @PostMapping("/admin/displayInvoice")
     public String displayInvoice(@ModelAttribute InvoiceDetailsDTO invoiceDetails, Model model){ 
         InvoiceBuilder builder = billService.createInvoiceBuilder(invoiceDetails);
+        model.addAttribute("invoiceDetails", invoiceDetails);
         model.addAttribute("bill", new BillDTO(billService.calculateInvoice(builder)));
         model.addAttribute("charges", billService.listCharges(builder));
         return "invoice";
@@ -51,25 +52,25 @@ public class BillingController {
 
     // TODO save invoice using service method (need ppsn)
     
-    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cash")
+    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "cash")
     public String cashPayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "cash-approval";
     }
 
     // TODO Potential strategy??
-    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
+    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
     public String onlinePayment(@ModelAttribute BillDTO bill) {
         return "online-payment";
     }
 
-    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "instalment")
+    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "instalment")
     public String instalment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("instalmentPlan", new InstalmentPlanDTO(bill.getAmount()));
         return "instalment-form";
     }
 
-    @PostMapping("/displayInstalmentPlan")
+    @PostMapping("/admin/displayInstalmentPlan")
     public String displayInstalmentPlan(@ModelAttribute InstalmentPlanDTO instalmentPlan, Model model){ 
         double total = instalmentPlan.getTotal();
         model.addAttribute("total", total);

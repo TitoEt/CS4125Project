@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head> 
 <body>
-    <h2>Confirm received cash to the value of €<span th:text="${amount}"></span></h2>
+    <h2>Confirm received cash to the value of <span th:text="${#numbers.formatCurrency(amount)}"></span></h2>
 
     <form method="get" action="/admin/dashboard">
         <input type="submit" value="Back to Dashboard">

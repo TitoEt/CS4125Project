@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/style.css}">
 </head> 
 <body>
-    <h2>Invoice amounts to €<span th:text="${bill.amount}"></span></h2> 
+    <h2>Invoice amounts to <span th:text="${#numbers.formatCurrency(bill.amount)}"></span></h2> 
 
     <h3>Invoice Details</h3>
     <p>Name <span th:text="${invoiceDetails.name}"></span></p> 
@@ -16,14 +16,14 @@
     <table>
         <tr th:each="charge: ${charges}">
             <td th:text="${charge.description}"></td>
-            <td th:text="${charge.formatAmount()}"></td>
+            <td th:text="${#numbers.formatCurrency(charge.amount)}"></td>
         </tr>
     </table>
     
     <br>
     <h4>Payment Options</h4>
 
-    <form action="#" th:action="@{/paymentMethod}" th:object="${bill}" method="post">
+    <form action="#" th:action="@{/admin/paymentMethod}" th:object="${bill}" method="post">
         <label for="payment">Patient's Preferred Payment Method</label>
         <br>
         <input type="hidden" th:value="${bill.amount}" name="amount">

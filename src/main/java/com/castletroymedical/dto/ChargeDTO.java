@@ -26,11 +26,6 @@ public class ChargeDTO {
     }
 
     public String toString() {
-        return "Charge for " + getDescription() + " amounts to " + formatAmount();
+        return String.format("Charge for %s amounts to €%.2f", getDescription(), this.amount);
     }
-
-    public String formatAmount() {
-        return String.format("€%.2f", this.amount);
-    }
-
 }

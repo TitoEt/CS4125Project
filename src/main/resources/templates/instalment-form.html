@@ -8,7 +8,7 @@
 </head> 
 <body>
     <h2>Instalment Plan</h2>
-    <form action="#" th:action="@{/displayInstalmentPlan}" th:object="${instalmentPlan}" method="post">
+    <form action="#" th:action="@{/admin/displayInstalmentPlan}" th:object="${instalmentPlan}" method="post">
         <label for="numberInstalments"> Enter number of instalments </label>
         <br>
         <input type="number" id="numberInstalments" name="numberInstalments" th:field="*{numberInstalments}" min="2">

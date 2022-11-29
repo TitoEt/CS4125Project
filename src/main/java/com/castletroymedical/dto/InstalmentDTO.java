@@ -40,7 +40,15 @@ public class InstalmentDTO implements Bill {
         this.dateDue = dateDue;
     }   
 
+    private String formatAmount() {
+        return String.format("€%.2f", this.instalmentAmount);
+    }
+
+    private String formatDate() {
+        return this.dateDue.format(dateFormat);
+    }
+
     public String toString() {
-        return String.format("Instalment amount of %.2f due on %s", this.instalmentAmount, this.dateDue.format(dateFormat));
+        return String.format("Instalment amount of %s due on %s", formatAmount(), formatDate());
     }
 }
