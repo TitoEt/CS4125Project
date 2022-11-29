@@ -5,20 +5,15 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.castletroymedical.database.entity.Patient;
-import com.castletroymedical.database.repository.PatientRepository;
 import com.castletroymedical.dto.PatientDto;
+import com.castletroymedical.entity.Patient;
+import com.castletroymedical.repository.PatientRepository;
 import com.castletroymedical.service.PatientService;
 
 @Service
 public class PatientServiceImpl implements PatientService {
     
-    private PatientRepository patientRepository;
-
-    @Override
-    public void savePatientBody(Patient patient) { 
-        patientRepository.save(patient);
-    }
+    private PatientRepository patientRepository; 
 
     @Override
     public void savePatient(PatientDto patientDto) {

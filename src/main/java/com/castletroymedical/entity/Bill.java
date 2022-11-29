@@ -1,4 +1,4 @@
-package com.castletroymedical.database.entity;
+package com.castletroymedical.entity;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import lombok.Setter;
 public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bill_id;
+    private Long billId;
     
     @ManyToOne
     @JoinColumn(name = "ppsn")
-    private Patient patient;
+    private Patient patientPpsn;
 
     @Column(nullable = false)
     Date dateIssued;
@@ -45,10 +45,10 @@ public class Bill {
     @JoinTable(
         name = "bill_charges",
         joinColumns = {
-            @JoinColumn(name = "bill_id", referencedColumnName = "bill_id")
+            @JoinColumn(name = "billId", referencedColumnName = "billId")
         },
         inverseJoinColumns = {
-            @JoinColumn(name = "charge_id", referencedColumnName = "charge_id")
+            @JoinColumn(name = "chargeId", referencedColumnName = "chargeId")
         }
     )
     private List<Charge> charges = new ArrayList<>();
@@ -57,10 +57,10 @@ public class Bill {
     @JoinTable(
         name = "bill_instalment_payments",
         joinColumns = {
-            @JoinColumn(name = "bill_id", referencedColumnName = "bill_id")
+            @JoinColumn(name = "billId", referencedColumnName = "billId")
         },
         inverseJoinColumns = {
-            @JoinColumn(name = "payment_id", referencedColumnName = "payment_id")
+            @JoinColumn(name = "paymentId", referencedColumnName = "paymentId")
         }
     )
     private List<InstalmentPayment> instalmentPayments = new ArrayList<>();

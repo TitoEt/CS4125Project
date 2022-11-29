@@ -1,4 +1,4 @@
-package com.castletroymedical.database.entity;
+package com.castletroymedical.entity;
 
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import lombok.Setter;
 public class PatientUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patient_id;
+    private Long patientId;
 
     @Column(nullable = false)
     private String password;
@@ -27,17 +27,17 @@ public class PatientUser {
     //<ISHA> FK = ppsn
     @OneToOne
     @JoinColumn(name = "ppsn")
-    private Patient patient;
+    private Patient patientPpsn;
 
     //<ISHA> Table for all bills for all patients
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
         name = "patient_bill",
         joinColumns = {
-            @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
+            @JoinColumn(name = "patientId", referencedColumnName = "patientId")
         },
         inverseJoinColumns = {
-            @JoinColumn(name = "bill_id", referencedColumnName = "bill_id")
+            @JoinColumn(name = "billId", referencedColumnName = "billId")
         }
     )
     private List<Bill> bills = new ArrayList<>();

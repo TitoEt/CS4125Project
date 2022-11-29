@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientUserDto {
-    private Long patient_id;
+    private Long patientId;
 
     @NotEmpty(message = "Password may not be empty")
     private String password;
