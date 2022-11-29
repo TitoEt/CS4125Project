@@ -21,7 +21,7 @@ public class LoadDatabase {
             procedureRepository.save(new HospitalProcedure(6L,"CAT Scan",75.0));
             procedureRepository.save(new HospitalProcedure(7L,"Joint Injection",65.0));
             procedureRepository.save(new HospitalProcedure(8L,"Cryotherapy",60.0));
-            procedureRepository.save(new HospitalProcedure(8L,"Cervical Smear",90.0));
+            procedureRepository.save(new HospitalProcedure(9L,"Cervical Smear",90.0));
             procedureRepository.save(new HospitalProcedure(10L,"Chemotherapy",557.0));
             procedureRepository.save(new HospitalProcedure(11L,"Kidney Function Assessment",811.0));
             procedureRepository.save(new HospitalProcedure(12L,"Vaccinations",40.0));
