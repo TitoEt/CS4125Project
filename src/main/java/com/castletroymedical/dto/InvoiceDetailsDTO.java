@@ -1,20 +1,24 @@
-package com.castletroymedical.ui.forms;
+package com.castletroymedical.dto;
 
-public class InvoiceForm {
+public class InvoiceDetailsDTO {
     private String name;
     private String ppsn;
+    private String patientType;
     private String procedure;
     private boolean consultation;  
+    private boolean hospitalStay;
     private String bedType;
     private int stayDuration;
+    private boolean monitoring;
     private int monitoringDuration;
 
-    public InvoiceForm() {
+    public InvoiceDetailsDTO() {
     }
 
-    public InvoiceForm(String name, String ppsn) {
+    public InvoiceDetailsDTO(String name, String ppsn, String invoiceType) {
         this.name = name;
         this.ppsn = ppsn;
+        this.patientType = invoiceType;
     }    
 
     public String getName() {
@@ -27,6 +31,10 @@ public class InvoiceForm {
 
     public String getPpsn() {
         return this.ppsn;
+    }
+
+    public void setPpsn(String ppsn) {
+        this.ppsn = ppsn;
     }
 
     public String getProcedure() {
@@ -45,8 +53,16 @@ public class InvoiceForm {
         this.consultation = consultation;
     }
 
+    public boolean getHospitalStay() {
+        return this.hospitalStay;
+    }
+
+    public void setHospitalStay(boolean hospitalStay) {
+        this.hospitalStay = hospitalStay;
+    }
+
     public String getBedType() {
-        return bedType;
+        return this.bedType;
     }
 
     public void setBedType(String bedType) {
@@ -61,12 +77,28 @@ public class InvoiceForm {
         this.stayDuration = stayDuration;
     }
 
+    public boolean getMonitoring() {
+        return this.monitoring;
+    }
+
+    public void setMonitoring(boolean monitoring) {
+        this.monitoring = monitoring;
+    }
+
     public int getMonitoringDuration() {
         return this.monitoringDuration;
     }
 
     public void setMonitoringDuration(int monitoringDuration) {
         this.monitoringDuration = monitoringDuration;
+    }
+
+    public String getPatientType() {
+        return this.patientType;
+    }
+
+    public void setPatientType(String patientType) {
+        this.patientType = patientType;
     }
 
 }
