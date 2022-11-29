@@ -1,4 +1,4 @@
-package com.castletroymedical.database.service;
+package com.castletroymedical.service;
 
 import java.util.ArrayList; 
 import java.util.Optional;
@@ -12,7 +12,7 @@ import com.castletroymedical.database.repository.PatientRepository;
 @Service
 public class PatientService {
 
-    @Autowired
+    //@Autowired
     PatientRepository repository;
 
     // <ISHA> Going to read more about Optional later
