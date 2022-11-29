@@ -20,5 +20,10 @@ public class MainController {
         model.addAttribute("stripePublicKey", stripePublicKey);
         return "stripe";
     }
+    
+    @GetMapping("/googlepay")
+    public String googlepay() {
+    return "googlepay";
+    }
 
 }
