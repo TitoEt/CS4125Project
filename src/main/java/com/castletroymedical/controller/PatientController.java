@@ -1,4 +1,4 @@
-package com.castletroymedical.database.controller;
+package com.castletroymedical.controller;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.castletroymedical.database.entity.PatientEntity;
-import com.castletroymedical.database.service.PatientService;
+import com.castletroymedical.service.PatientService;
 
 @RestController
 @RequestMapping(path= "/emp")
