@@ -3,15 +3,17 @@ package com.castletroymedical.gateway;
 import com.castletroymedical.billing.Bill;
 
 public class CashPayment implements Payment {
-    private Bill b;
+    private double amount;
+
+    public CashPayment(double amount) {
+        this.amount = amount;
+    }
 
     @Override
     public void execute() {
-        b.getCharge();
-    }
-
-    public void cashpay(Bill b) {
-        this.b = b;
+        // TODO register cash paid in db 
+        System.out.printf("Paid by Cash %f", this.amount);
+        // System.out.printf("Paid by Cash %f", bill.getCharge());
     }
 
 }
