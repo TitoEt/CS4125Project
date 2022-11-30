@@ -20,6 +20,7 @@ public class MainController {
         return "index";
     }
 
+
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         PatientDto patientDto = new PatientDto();
