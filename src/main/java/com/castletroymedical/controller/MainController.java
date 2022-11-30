@@ -10,6 +10,21 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/admin/registerpatient")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/viewpatient-pt")
+    public String viewpt() {
+        return "viewpatient-pt";
+    }
+
+    @GetMapping("/editProfile")
+    public String editProfile() {
+        return "editprofile";
+    }
+
     @GetMapping("/stripe")
     public String stripe() {
         return "stripe";
