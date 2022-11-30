@@ -5,21 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
- 
-@Getter
+
+import java.util.List;
+
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "hospital_procedure")
-public class HospitalProcedure { 
+@Table(name="roles")
+public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long procedureId;
+    private Long roleId;
 
-    @Column(nullable = false)
-    private String procedureName;
+    @Column(nullable=false, unique=true)
+    private String name;
 
-    @Column(nullable = false)
-    private double baseCharge;
-} 
+    @ManyToMany(mappedBy="roles")
+    private List<UserEntity> users;
+}

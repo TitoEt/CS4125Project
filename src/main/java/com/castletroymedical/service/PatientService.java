@@ -1,37 +1,19 @@
 package com.castletroymedical.service;
 
-import java.util.ArrayList; 
+import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.castletroymedical.dto.PatientDto;
+import com.castletroymedical.entity.PatientEntity;
 
-import com.castletroymedical.database.entity.PatientEntity;
-import com.castletroymedical.database.repository.PatientRepository;
+public interface PatientService {
+    void savePatient(PatientDto patientDto);
 
-@Service
-public class PatientService {
+    Optional<PatientEntity> getPatientByPpsn(String ppsn);
 
-    //@Autowired
-    PatientRepository repository;
+    PatientEntity findPatientByEmail(String email);
 
-    // <ISHA> Going to read more about Optional later
-    public Optional<PatientEntity> getPatientByPpsn(String ppsn){
-        return repository.findById(ppsn);   
-    }
+    String getPatientType(PatientEntity patient);
 
-    public ArrayList<PatientEntity> getAllPatients(){
-        ArrayList<PatientEntity> patients = new ArrayList<PatientEntity>();
-        repository.findAll().forEach(patient -> patients.add(patient));
-        return patients;
-    }
-
-    public void saveOrUpdate(PatientEntity patient){
-        repository.save(patient);
-    }
-
-    public void deletePatientByPpsn(String ppsn){
-        repository.deleteById(ppsn);
-    }
-    
+    List<PatientDto> findAllPatients();
 }

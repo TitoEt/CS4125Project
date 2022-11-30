@@ -16,14 +16,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "bill")
-public class Bill {
+public class BillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long billId;
     
     @ManyToOne
     @JoinColumn(name = "ppsn")
-    private Patient patientPpsn;
+    private PatientEntity patientPpsn;
 
     @Column(nullable = false)
     Date dateIssued;
@@ -51,7 +51,7 @@ public class Bill {
             @JoinColumn(name = "chargeId", referencedColumnName = "chargeId")
         }
     )
-    private List<Charge> charges = new ArrayList<>();
+    private List<ChargeEntity> charges = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -63,5 +63,5 @@ public class Bill {
             @JoinColumn(name = "paymentId", referencedColumnName = "paymentId")
         }
     )
-    private List<InstalmentPayment> instalmentPayments = new ArrayList<>();
+    private List<InstalmentPaymentEntity> instalmentPayments = new ArrayList<>();
 }

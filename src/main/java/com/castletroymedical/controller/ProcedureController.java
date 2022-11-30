@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.castletroymedical.entity.HospitalProcedure;
+import com.castletroymedical.dto.HospitalProcedureDto;
+import com.castletroymedical.entity.HospitalProcedureEntity;
 import com.castletroymedical.service.impl.HospitalProcedureServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,28 +26,32 @@ public class ProcedureController {
     }
 
     @GetMapping("/all")
-    public List<HospitalProcedure> getAllProcedures(){
-        return procedureService.getAllProcedures();
+    public List<HospitalProcedureDto> getAllProcedures(){
+        return procedureService.findAllProcedures();
     }
 
-    // @GetMapping("/{procedureName}")
-    // public HospitalProcedure findHospitalProcedureNyName(@PathVariable("procedureName") String name){
-    //     return procedureService.findProcedureByProcedureName(name);
-    // }
-
-    @GetMapping("/{procedureId}")
-    public Optional<HospitalProcedure> getHospitalProcedure(@PathVariable("procedureId") Long procedureId){
+    @GetMapping("/id/{procedureId}")
+    public Optional<HospitalProcedureEntity> getHospitalProcedure(@PathVariable("procedureId") Long procedureId){
         return procedureService.getHospitalProcedure(procedureId);
     }
 
+    @GetMapping("/{procedureName}")
+    public Optional<HospitalProcedureEntity> findProcedureByName(@PathVariable("procedureName") String name){
+        return procedureService.findByProcedureName(name);
+    }
+
     @PostMapping("/add-procedure")
-    public void addProcedure(@RequestBody HospitalProcedure hospitalProcedure) {
+    public void addProcedure(@RequestBody HospitalProcedureEntity hospitalProcedure) {
          procedureService.saveOrUpdateProcedure(hospitalProcedure);
     }
 
     @PutMapping("/update-procedure")
-    public void updateProcedure(@RequestBody HospitalProcedure hospitalProcedure){
+    public void updateProcedure(@RequestBody HospitalProcedureEntity hospitalProcedure){
         procedureService.saveOrUpdateProcedure(hospitalProcedure);
     }
     
+    @GetMapping("/{procedureId}/charge")
+    public double getChargeQithProcedureId(@PathVariable("procedureId") Long procedureId){
+        return procedureService.getProcedureCharge(procedureId);
+    }
 }

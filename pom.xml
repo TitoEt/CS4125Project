@@ -41,11 +41,11 @@
 			<version>1.18.24</version>
 		</dependency>
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 			<version>3.0.0</version>
-		</dependency> -->
+		</dependency>
 
 		<dependency>
 			<groupId>com.walterjwhite.java.dependencies</groupId>
