@@ -1,12 +1,12 @@
 package com.castletroymedical.service.impl;
 
 import java.util.List;
-// import java.util.stream.Collectors;
+import java.util.stream.Collectors;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-// import com.castletroymedical.dto.ProcedureDto;
+import com.castletroymedical.dto.HospitalProcedureDto; 
 import com.castletroymedical.entity.HospitalProcedureEntity;
 import com.castletroymedical.repository.HospitalProcedureRepository;
 import com.castletroymedical.service.HospitalProcedureService;
@@ -19,26 +19,20 @@ public class HospitalProcedureServiceImpl implements HospitalProcedureService {
     public HospitalProcedureServiceImpl(HospitalProcedureRepository procedureRepository){
         this.procedureRepository = procedureRepository;
     }
-    
-
-    // @Override
-    // public List<ProcedureDto> findAllProcedures() {
-    //     List<HospitalProcedure> procedures = procedureRepository.findAll();
-    //     return procedures.stream().map((procedure) -> convertEntityToDto(procedure))
-    //     .collect(Collectors.toList());
-    // }
 
     @Override
-    public List<HospitalProcedureEntity> getAllProcedures() {
-        return procedureRepository.findAll();
+    public List<HospitalProcedureDto> findAllProcedures() {
+        List<HospitalProcedureEntity> procedures = procedureRepository.findAll();
+        return procedures.stream().map((procedure) -> convertEntityToDto(procedure))
+        .collect(Collectors.toList());
     }
 
-    // private ProcedureDto convertEntityToDto(HospitalProcedure procedure){
-    //     ProcedureDto procedureDto = new ProcedureDto();
-    //     procedureDto.setProcedureName(procedure.getProcedureName());
-    //     procedureDto.setBaseCharge(procedure.getBaseCharge());
-    //     return procedureDto;
-    // }
+    private HospitalProcedureDto convertEntityToDto(HospitalProcedureEntity procedure){
+        HospitalProcedureDto procedureDto = new HospitalProcedureDto();
+        procedureDto.setProcedureName(procedure.getProcedureName());
+        procedureDto.setBaseCharge(procedure.getBaseCharge());
+        return procedureDto;
+    }
 
     @Override
     public void saveOrUpdateProcedure(HospitalProcedureEntity procedure) {
@@ -58,6 +52,11 @@ public class HospitalProcedureServiceImpl implements HospitalProcedureService {
             charge = hp.get().getBaseCharge(); 
         }
         return charge;
+    }
+
+    @Override
+    public Optional<HospitalProcedureEntity> findByProcedureName(String name) {
+        return procedureRepository.findByProcedureNameIgnoreCase(name);
     }
     
 }

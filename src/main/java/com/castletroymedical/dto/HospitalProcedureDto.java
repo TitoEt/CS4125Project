@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProcedureDto {
+public class HospitalProcedureDto {
     private Long procedureId;
     @NotEmpty
     private String procedureName;
