@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Choose Online Payment</title>
+    <title>Make Online Payment</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head> 
 <body>
-    <h2>Online payment</h2>
+    <h2>Online payment <span th:text="${#numbers.formatCurrency(amount)}"></span></h2>
 </body>
 </html>

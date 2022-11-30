@@ -39,7 +39,7 @@
         <br>
         <label for="stayDuration">Duration of stay</label>
         <br>
-        <input type="number" id="stayDuration" name="stayDuration" th:field="*{stayDuration}" placeholder="0" min="0">
+        <input type="number" onfocus="this.value=''" id="stayDuration" name="stayDuration" th:field="*{stayDuration}" min="1">
         <br>
 
         <label for="monitoring">Did the patient require monitoring?</label>
@@ -47,7 +47,7 @@
         <br>
         <label for="monitoringDuration">Duration of monitoring</label>
         <br>
-        <input type="number" id="monitoringDuration" name="monitoringDuration" th:field="*{monitoringDuration}" placeholder="0" min="0">
+        <input type="number" onfocus="this.value=''" id="monitoringDuration" name="monitoringDuration" th:field="*{monitoringDuration}" min="1">
         <br>  
         <input type="hidden" th:value="${invoiceDetails.name}" name="name">
         <input type="hidden" th:value="${invoiceDetails.ppsn}" name="ppsn">

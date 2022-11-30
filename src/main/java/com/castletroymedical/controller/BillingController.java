@@ -60,7 +60,8 @@ public class BillingController {
 
     // TODO Potential strategy??
     @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
-    public String onlinePayment(@ModelAttribute BillDTO bill) {
+    public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
+        model.addAttribute("amount", bill.getAmount());
         return "online-payment";
     }
 
@@ -73,10 +74,18 @@ public class BillingController {
     @PostMapping("/admin/displayInstalmentPlan")
     public String displayInstalmentPlan(@ModelAttribute InstalmentPlanDTO instalmentPlan, Model model){ 
         double total = instalmentPlan.getTotal();
+        double numberInstalments = instalmentPlan.getNumberInstalments();
         model.addAttribute("total", total);
-        model.addAttribute("instalments", billService.calculateInstalments(total, instalmentPlan.getNumberInstalments(), instalmentPlan.getBreakPeriod()));
+        model.addAttribute("instalments", billService.listInstalments(total, numberInstalments, instalmentPlan.getBreakPeriod()));
+        model.addAttribute("bill", new BillDTO(billService.calculateInstalment(total, numberInstalments)));
         // TODO save instalment plan
         return "instalment-plan";
+    }
+    
+    @PostMapping("/admin/payInitialInstalment")
+    public String payInitialInstalment(@ModelAttribute BillDTO bill, Model model) {
+        model.addAttribute("amount", bill.getAmount());
+        return "online-payment";
     }
 
 }
