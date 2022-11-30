@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+    <html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+     <title>View Profile</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            
+      <!-- 
+        maybe with patient name etc options in the header
+        will have their details layed out in a single card 
+        with an option to edit in the corner
+    -->
+ </head>
+
+ <div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Jane Doe
+                                    </h5>
+                                    <h6>
+                                        Patient Profile
+                                    </h6>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+                </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Jane Doe</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>dummy@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone Number</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>0865748938</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Apple Baum, Simple Street, Cork</p>
+                                            </div>
+                                        </div>
+                                        <div>
+                                          <label>Medical Card Holder?</label>
+                                          <div>
+                                            <input type="radio" id="yes" name="option" value="Yes" />
+                                            <label for="yes">Yes</label><br />
+                                            <input type="radio" id="no" name="option" value="No" />
+                                            <label for="no">No</label><br />
+                                          </div> 
+                                        </div>
+                                    
+                                        <div>
+                                          <label>Insurance Coverage?</label>
+                                          <div>
+                                            <input type="radio" id="yes" name="option" value="Yes" />
+                                            <label for="yes">Yes</label><br />
+                                            <input type="radio" id="no" name="option" value="No" />
+                                            <label for="no">No</label><br />
+                                          </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                      <button type= "button" onclick="alert('Button clicked')"> Edit Details </button>
+
+
+            </form>           
+        </div>
+
+ </html>
