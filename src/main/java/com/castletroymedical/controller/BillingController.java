@@ -59,9 +59,9 @@ public class BillingController {
     }
 
     // TODO Potential strategy??
-    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
+    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
     public String onlinePayment(@ModelAttribute BillDTO bill) {
-        return "online-payment";
+        return "card-payment";
     }
 
     @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "instalment")

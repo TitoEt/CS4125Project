@@ -16,7 +16,8 @@
   <body>
     <!-- Display a payment form -->
     <form id="payment-form">
-      <h2><b>Stripe Payment Portal</b></h2>
+      <h1><b>Stripe Payment Portal</b></h1>
+      <h2><b>Total to pay:<span th:text="${#numbers.formatCurrency(bill.amount)}"></span></b></h2>
       <p>Please enter below, the email address you would like your receipt sent to.</p>  
       <input type="text" id="email" placeholder="Email address" />
       <div id="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -26,8 +27,7 @@
       </button>
       <p id="card-error" role="alert"></p>
       <p class="result-message hidden">
-        Payment succeeded, see the result in your
-        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+        Payment succeeded. 
       </p>
     </form>
   </body>

@@ -36,7 +36,7 @@ const baseRequest = {
 /**
  * Card networks supported by your site and your gateway
  */
-const allowedCardNetworks = ["AMEX", "DISCOVER", "INTERAC", "JCB", "MASTERCARD", "VISA"];
+const allowedCardNetworks = ["MASTERCARD", "VISA"];
 
 /**
  * Card authentication methods supported by your site and your gateway
@@ -83,8 +83,7 @@ const cardPaymentMethod = Object.assign(
 
 /**
  * An initialized google.payments.api.PaymentsClient object or null if not yet set
- *
- * @see {@link getGooglePaymentsClient}
+ 
  */
 let paymentsClient = null;
 
@@ -95,8 +94,6 @@ let paymentsClient = null;
  * Each member of allowedPaymentMethods should contain only the required fields,
  * allowing reuse of this base request when determining a viewer's ability
  * to pay and later requesting a supported payment method
- *
- * @returns {object} Google Pay API version, payment methods supported by the site
  */
 function getGoogleIsReadyToPayRequest() {
   return Object.assign(
@@ -110,18 +107,14 @@ function getGoogleIsReadyToPayRequest() {
 
 /**
  * Configure support for the Google Pay API
- *
- * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#PaymentDataRequest|PaymentDataRequest}
- * @returns {object} PaymentDataRequest fields
+ 
  */
 function getGooglePaymentDataRequest() {
   const paymentDataRequest = Object.assign({}, baseRequest);
   paymentDataRequest.allowedPaymentMethods = [cardPaymentMethod];
   paymentDataRequest.transactionInfo = getGoogleTransactionInfo();
   paymentDataRequest.merchantInfo = {
-    // @todo a merchant ID is available for a production environment after approval by Google
-    // See {@link https://developers.google.com/pay/api/web/guides/test-and-deploy/integration-checklist|Integration checklist}
-    // merchantId: '01234567890123456789',
+   
     merchantName: 'Example Merchant'
   };
   return paymentDataRequest;
@@ -129,9 +122,6 @@ function getGooglePaymentDataRequest() {
 
 /**
  * Return an active PaymentsClient or initialize
- *
- * @see {@link https://developers.google.com/pay/api/web/reference/client#PaymentsClient|PaymentsClient constructor}
- * @returns {google.payments.api.PaymentsClient} Google Pay API client
  */
 function getGooglePaymentsClient() {
   if ( paymentsClient === null ) {
@@ -152,8 +142,6 @@ function onGooglePayLoaded() {
       .then(function(response) {
         if (response.result) {
           addGooglePayButton();
-          // @todo prefetch payment data to improve performance after confirming site functionality
-          // prefetchGooglePaymentData();
         }
       })
       .catch(function(err) {
@@ -164,9 +152,6 @@ function onGooglePayLoaded() {
 
 /**
  * Add a Google Pay purchase button alongside an existing checkout button
- *
- * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#ButtonOptions|Button options}
- * @see {@link https://developers.google.com/pay/api/web/guides/brand-guidelines|Google Pay brand guidelines}
  */
 function addGooglePayButton() {
   const paymentsClient = getGooglePaymentsClient();
@@ -177,9 +162,6 @@ function addGooglePayButton() {
 
 /**
  * Provide Google Pay API with a payment amount, currency, and amount status
- *
- * @see {@link https://developers.google.com/pay/api/web/reference/request-objects#TransactionInfo|TransactionInfo}
- * @returns {object} transaction info, suitable for use as transactionInfo property of PaymentDataRequest
  */
 function getGoogleTransactionInfo() {
   return {
@@ -187,7 +169,7 @@ function getGoogleTransactionInfo() {
     currencyCode: 'USD',
     totalPriceStatus: 'FINAL',
     // set to cart total
-    totalPrice: '1.00'
+    totalPrice: '1.00' //inset total charge generated here
   };
 }
 
