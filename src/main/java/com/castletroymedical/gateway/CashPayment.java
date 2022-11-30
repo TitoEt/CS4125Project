@@ -1,7 +1,5 @@
 package com.castletroymedical.gateway;
 
-import com.castletroymedical.billing.Bill;
-
 public class CashPayment implements Payment {
     private double amount;
 

@@ -1,17 +1,17 @@
 package com.castletroymedical.gateway;
 
-import com.castletroymedical.billing.Bill;
-
 public class CardPayment implements Payment{
     private double amount;
+    private CardStrategy strategy;
 
-    public CardPayment(double amount) {
-        this.amount = amount;
+    public CardPayment(CardStrategy strategy, double amount) {
+      this.strategy = strategy;  
+      this.amount = amount;
     }
     @Override
     public void execute() {
         // TODO Auto-generated method stub
         System.out.printf("Choose card payment amount %s", this.amount);
-    }
-    
+        strategy.pay(this.amount);      
+    }    
 }
