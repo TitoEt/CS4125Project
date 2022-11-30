@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Patient Instalment Plan </title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head> 
+<body>
+    <h3>Instalment Plan Details</h3>
+    <p>Total Amount <span th:text="${#numbers.formatCurrency(total)}"></span></p> 
+    <h4>Schedule</h4>
+    <table>
+        <th>Due Date</th>
+        <th>Amount</th>
+        <tr th:each="instalment: ${instalments}">
+            <td th:text="${#temporals.format(instalment.dateDue,'dd/MM/yyyy')}"></td>
+            <td th:text="${#numbers.formatCurrency(instalment.instalmentAmount)}"></td>
+        </tr>
+    </table>
+
+    <br>
+    <form action="#" th:action="@{/admin/payInitialInstalment}" th:object="${bill}" method="post">
+        <input type="hidden" th:value="${bill.amount}" name="amount">
+        <input type="submit" value="Agree Schedule and Make Initial Payment">
+    </form>
+
+</body>
+</html>
