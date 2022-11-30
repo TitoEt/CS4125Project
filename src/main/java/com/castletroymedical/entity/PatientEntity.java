@@ -33,7 +33,7 @@ public class PatientEntity {
     private String address;
 
     @Column(nullable = false)
-    private int phoneNumber;
+    private String phoneNumber;
 
     //<ISHA> Email links patient to user
     @OneToOne

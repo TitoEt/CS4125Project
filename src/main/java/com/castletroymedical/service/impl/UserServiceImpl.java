@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    private void savePatientUser(UserDto userDto) {
+    public void savePatientUser(UserDto userDto) {
         UserEntity user = new UserEntity();
         user.setEmail(userDto.getEmail());
         // user.setPassword(passwordEncoder.encode(userDto.getPassword()));

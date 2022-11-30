@@ -25,13 +25,11 @@ public class MainController {
         return "editprofile";
     }
 
-    @GetMapping("/stripe")
-    public String stripe() {
-        return "stripe";
-    }
 
-    @GetMapping("/admin/dashboard")
-    public String dashboard() {
-        return "admin-dashboard";
-    }
-}
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model){
+     
+
+           retu }
+
+    
