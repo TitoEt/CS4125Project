@@ -17,4 +17,9 @@ public class HospitalProcedureDto {
     private String procedureName;
     @NotEmpty
     private double baseCharge;
+
+    public HospitalProcedureDto(String procedureName, double baseCharge) {
+        this.procedureName = procedureName;
+        this.baseCharge = baseCharge;
+    }
 }

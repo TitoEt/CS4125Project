@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.castletroymedical.billing.InvoiceBuilder;
-import com.castletroymedical.database.entity.ProcedureEntity;
+import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.service.BillService;
 import com.castletroymedical.service.PatientService;
 import com.castletroymedical.dto.BillDTO;
@@ -32,10 +32,10 @@ public class BillingController {
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
         model.addAttribute("invoiceDetails", new InvoiceDetailsDTO("name", ppsn, "private"));
         
-        List<ProcedureEntity> procedures = new ArrayList<ProcedureEntity>(); // TODO get procedure list
-        procedures.add(new ProcedureEntity("Xray", 100));
-        procedures.add(new ProcedureEntity("Hip Surgery", 350));
-        procedures.add(new ProcedureEntity("Transplant", 480));
+        List<HospitalProcedureDto> procedures = new ArrayList<HospitalProcedureDto>(); // TODO get procedure list
+        procedures.add(new HospitalProcedureDto("Xray", 100));
+        procedures.add(new HospitalProcedureDto("Hip Surgery", 350));
+        procedures.add(new HospitalProcedureDto("Transplant", 480));
         model.addAttribute("procedures", procedures);
         return "invoice-form";
     }
