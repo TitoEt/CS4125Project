@@ -9,7 +9,10 @@ jobs:
     steps:  
       - name: Set up
         uses: ./.github/workflows/setup.yml
-        
+
+      - name: Maven Command
+        run: mvn clean compile
+
       - name: Maven Build
         run: mvn --batch-mode -DskipTests package
 
