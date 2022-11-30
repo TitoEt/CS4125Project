@@ -1,27 +1,35 @@
 <!DOCTYPE html>
+<html lang="en" >
+<html style="font-size: 16px;" lang="en">
+    <html lang="en" xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Log in</title>
-    <link rel="icon" type="image/x-icon" href="src/main/resources/favicon/favicon.ico">   
-    <link rel="stylesheet" type="text/css" th:href="@{resources/static/form.css}" />
-</head> 
-<form action="/action_page.php">
-  <div class="container">
-    <label for="uname"><b>Email</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+  <meta charset="UTF-8">
+  <title>Log In</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+</head>
+<body>
+<section class='login' id='login'>
+  <div class='head'>
+  <h1 class='company'>Castletroy Medical</h1>
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+  <p class='msg'>Welcome back</p>
+  <div class='form'>
+    <form>
+  <input type="text" placeholder='Email' class='text' id='email' required><br>
+  <input type="password" placeholder='••••••••••••••' class='password'><br>
+  <a href="#" class='btn-login' id='do-login'>Login</a>
+  <a href="#" class='forgot'>Forgot Password?</a>
+    </form>
   </div>
-</form>  
+</section>
+ <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 casteltroymedical.com - All Rights Reserved.</p>
+  </div></footer>
+
+  <script  src="./script.js"></script>
+
+</body>
+</html>
+
