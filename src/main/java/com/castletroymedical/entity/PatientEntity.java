@@ -1,6 +1,8 @@
 package com.castletroymedical.entity; 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -24,7 +26,7 @@ public class PatientEntity {
     private String name;
 
     @Column(nullable = false)
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob; 
 
     @Column(nullable = false)
@@ -33,9 +35,25 @@ public class PatientEntity {
     @Column(nullable = false)
     private int phoneNumber;
 
-    private String email;
+    //<ISHA> Email links patient to user
+    @OneToOne
+    @JoinColumn(name = "email")
+    private UserEntity userEmail;
  
     private boolean medicalCardHolder;
      
     private boolean insured; 
+
+    //<ISHA> Each patient can have one or more bills
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "patient_bill",
+        joinColumns = {
+            @JoinColumn(name = "ppsn", referencedColumnName = "ppsn")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "billId", referencedColumnName = "billId")
+        }
+    )
+    private List<BillEntity> bills = new ArrayList<>();
 }

@@ -1,38 +1,45 @@
 package com.castletroymedical.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.castletroymedical.dto.PatientDto;
 import com.castletroymedical.entity.PatientEntity;
+import com.castletroymedical.entity.UserEntity;
 import com.castletroymedical.repository.PatientRepository;
+import com.castletroymedical.repository.UserRepository;
 import com.castletroymedical.service.PatientService;
 
 @Service
 public class PatientServiceImpl implements PatientService {
     
     private PatientRepository patientRepository; 
+    private UserRepository userRepository;
 
     @Override
     public void savePatient(PatientDto patientDto) {
-        PatientEntity patient = new PatientEntity(  patientDto.getPpsn(),
-                                        patientDto.getFirstName() + " " + patientDto.getLastName(),
-                                        patientDto.getDob(),
-                                        patientDto.getAddress(),
-                                        patientDto.getPhoneNumber(),
-                                        patientDto.getEmail(),
-                                        patientDto.isMedicalCardHolder(),
-                                        patientDto.isInsured()
-        );
+        PatientEntity patient = new PatientEntity(); 
+        patient.setName(patientDto.getFirstName() + " " + patientDto.getLastName());
+        patient.setDob(patientDto.getDob());
+        patient.setAddress(patientDto.getAddress());
+        patient.setPhoneNumber(patientDto.getPhoneNumber());
+        patient.setMedicalCardHolder(patientDto.isMedicalCardHolder());
+        patient.setInsured(patientDto.isInsured());
+
+
+        Optional<UserEntity> user = userRepository.findById(patientDto.getEmail());
+        if(user.isPresent()) patient.setUserEmail(user.get());
 
         patientRepository.save(patient);
     }
 
     @Override
-    public PatientEntity findPatientByEmail(String email) { 
-        return patientRepository.findByEmail(email);
+    public PatientEntity findPatientByEmail(String email) {
+        UserEntity user = userRepository.findById(email).get();
+        return patientRepository.findByUserEmail(user);
     }
 
     @Override
@@ -67,10 +74,15 @@ public class PatientServiceImpl implements PatientService {
         patientDto.setDob(patient.getDob());
         patientDto.setAddress(patient.getAddress());
         patientDto.setPhoneNumber(patient.getPhoneNumber());
-        patientDto.setEmail(patient.getEmail());
+        patientDto.setEmail(patient.getUserEmail().getEmail());
         patientDto.setMedicalCardHolder(patient.isMedicalCardHolder());
         patientDto.setInsured(patient.isInsured());
 
         return patientDto;
+    }
+
+    @Override
+    public Optional<PatientEntity> getPatientByPpsn(String ppsn) {
+        return patientRepository.findById(ppsn);
     }
 }
