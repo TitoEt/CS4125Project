@@ -4,23 +4,23 @@ on:
   pull_request:
 
 jobs:
-    setup-workflow:
-      uses: ./.github/workflows/setup.yml
-      
-    run-tests:
-      runs-on: ubuntu-latest
-      steps:  
-        - name: Maven Build
-          run: mvn --batch-mode -DskipTests package
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:  
+      - name: Set up
+        uses: ./.github/workflows/setup.yml
+        
+      - name: Maven Build
+        run: mvn --batch-mode -DskipTests package
 
-        - name: Run Tests
-          run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      - name: Run Tests
+        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
 
-        - name: Test Report
-          uses: dorny/test-reporter@v1
-          if: always()
-          with:
-            name: Maven Tests
-            path: target/surefire-reports/*.xml
-            reporter: java-junit
-            fail-on-error: true
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Maven Tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
