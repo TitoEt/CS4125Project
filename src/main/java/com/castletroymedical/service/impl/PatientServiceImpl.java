@@ -19,9 +19,15 @@ public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository; 
     private UserRepository userRepository;
 
+    public PatientServiceImpl(PatientRepository patientRepository, UserRepository userRepository) {
+        this.patientRepository = patientRepository;
+        this.userRepository = userRepository;
+    }
+
     @Override
     public void savePatient(PatientDto patientDto) {
         PatientEntity patient = new PatientEntity(); 
+        patient.setPpsn(patientDto.getPpsn());
         patient.setName(patientDto.getFirstName() + " " + patientDto.getLastName());
         patient.setDob(patientDto.getDob());
         patient.setAddress(patientDto.getAddress());
@@ -29,9 +35,8 @@ public class PatientServiceImpl implements PatientService {
         patient.setMedicalCardHolder(patientDto.isMedicalCardHolder());
         patient.setInsured(patientDto.isInsured());
 
-
-        Optional<UserEntity> user = userRepository.findById(patientDto.getEmail());
-        if(user.isPresent()) patient.setUserEmail(user.get());
+        UserEntity user = userRepository.findByEmail(patientDto.getEmail());
+        if(user != null) patient.setUserEmail(user);
 
         patientRepository.save(patient);
     }
