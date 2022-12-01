@@ -13,12 +13,12 @@ import com.castletroymedical.service.PatientService;
 public class PatientController {
     PatientService patientService;
 
-    public PatientController(PatientService patientService){
+    public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
 
     @PostMapping("/add-patient")
-    public void addPatient(@RequestBody PatientDto patient){
+    public void addPatient(@RequestBody PatientDto patient) {
         patientService.savePatient(patient);
     }
 }

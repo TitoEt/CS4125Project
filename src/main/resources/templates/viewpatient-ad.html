@@ -11,10 +11,46 @@
         will have their details layed out in a single card 
         with an option to edit in the corner
     -->
-      
-      <button type= "button" onclick="alert('Button clicked')"> Edit </button>
-      <button type= "button" onclick="alert('Button clicked')"> Generate Invoice </button>
+<form action="/action_page.php">     
+    <div class="row mt-2">
+                        <label> Full Name </label> 
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Full name" value="Tito Etimiri"></div>
+                    </div>
 
+                    <div class="details">
+                        <label> Email </label> 
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="csasey640@gmail.com"></div>
+                        <label> Phone Number </label> 
+                        <div class="col-md-6"><input type="text" class="form-control" value="+353085969668" placeholder="Phone number"></div>
+                    </div>
+                    <div class="details">
+                        <label> Address </label> 
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Address" value="Apple Street, Cork city"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" value="Ireland" placeholder="Country"></div>
+                    </div>
 
+                    <div>
+                      <label>Medical Card Holder?</label>
+                       <div>
+                         <input type="radio" id="yes" name="option" value="Yes" checked="checked" />
+                         <label for="yes">Yes</label><br />
+                         <input type="radio" id="no" name="option" value="No" />
+                         <label for="no">No</label><br />
+                      </div> 
+                    </div>
+
+                    <div>
+                    <label>Insurance Coverage?</label>
+                    <div>
+                        <input type="radio" id="si" name="option1" value="Yes" />
+                        <label for="si">Yes</label><br />
+                        <input type="radio" id="non" name="option1" value="No" checked="checked" />
+                        <label for="non">No</label><br />
+                    </div>
+                    </div>
+
+<a href="editprofile.html"><button>Edit Profile</button></a>
+<a href="invoice-form.html"><button>Generate Invoice</button></a>
+</form>
  </head>
  </html>
