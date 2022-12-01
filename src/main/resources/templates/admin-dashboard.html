@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
+<html style="font-size: 16px;" lang="en">
+    <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>dashboard</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="dashboard.css" media="screen">
+    <link rel="stylesheet" href="dashboard.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 5.0.7, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
+    <!-- 
+       create a card for outstanding
+    installment plan requests
+    sub card will have pt name, date of request and ppsn
+    on each sub card have a accept or decline button
+    accept leads to generate installment plan page
+    decline creates a popup in pt profile
+    -->
     
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -22,8 +33,43 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="dashboard">
     <meta property="og:type" content="website">
-  </head>
+
+<style>
+.requests {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+/* On mouse-over, add a deeper shadow */
+.requests:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+}
+</style>
+</head>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-2f3a"><div class="u-clearfix u-sheet u-sheet-1">
+
+<div class="requests">
+  <div class="container">
+    <h3><b>Installment Plan Requests</b></h3>   
+    <h4><b>John Doe</b></h4> 
+    <p>Transaction A</p> 
+    <p>
+      <script> document.write(new Date().toLocaleDateString()); </script> <!--this should be date of request-->
+    </p>
+      <div>
+        <input type="radio" id="accept" name="option" value="accept" />
+        <label for="yes">Accept</label><br />
+        <input type="radio" id="decline" name="option" value="decline" />
+        <label for="no">Decline</label><br />
+    </div>
+    <input type="button" value="Submit" />
+  </div>
+</div>
+
     <div class="content">
         <div class="u-clearfix u-group-elements u-group-elements-1">
           <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="512" data-image-height="512">
@@ -59,7 +105,7 @@
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-aa7e">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Find Patient</a>
+        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Find Patient</a> <!--search bar so admin can search by ppsn and email -->
         <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">List All Patients</a>
         <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">Register Patient</a>
         <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-4">View Procedures</a>
@@ -71,4 +117,8 @@
         <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 casteltroymedical.com - All Rights Reserved.</p>
       </div></footer>
   
+<<<<<<< HEAD
 </body></html>
+=======
+</body></html>
+>>>>>>> clodaghw_dev

@@ -15,7 +15,7 @@ public class MainController {
         this.patientService =  patientService;
     }
     
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index() {
         return "index";
     }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Patient Dashboard</title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<button type= "button" onclick="alert('Button clicked')"> Update Profile </button>
+<button type= "button" onclick="alert('Button clicked')"> View Bills </button>
+ <!-- 
+        needs a pop up for appoitnment notifs
+    -->
+
+<div class= "app_notif">
+<script type="text/javascript">
+window.addEventListener("load", function(){
+    setTimeout(
+        function open(event){
+            document.querySelector(".app_notif").style.display = "block";
+        },
+        2000 
+    )
+});
+
+document.querySelector("#close").addEventListener("click", function(){
+    document.querySelector(".app_notif").style.display = "none";
+});
+    </script>
+ </div>
+</html>

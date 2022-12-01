@@ -32,7 +32,7 @@ public class PatientDto {
     private String address;
  
     @NotEmpty
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Email
     private String email;

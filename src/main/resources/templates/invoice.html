@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Patient Invoice </title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head> 
+<body>
+    <h2>Invoice amounts to <span th:text="${#numbers.formatCurrency(bill.amount)}"></span></h2> 
+
+    <h3>Invoice Details</h3>
+    <p>Name <span th:text="${invoiceDetails.name}"></span></p> 
+    <p>PPSN <span th:text="${invoiceDetails.ppsn}"></span></p> 
+    <h4>Charges</h4>
+    <table>
+        <tr th:each="charge: ${charges}">
+            <td th:text="${charge.description}"></td>
+            <td th:text="${#numbers.formatCurrency(charge.amount)}"></td>
+        </tr>
+    </table>
+    
+    <br>
+    <h4>Payment Options</h4>
+
+    <form action="#" th:action="@{/admin/paymentMethod}" th:object="${bill}" method="post">
+        <label for="payment">Patient's Preferred Payment Method</label>
+        <br>
+        <input type="hidden" th:value="${bill.amount}" name="amount">
+        <input type="submit" name="cash" value="Cash">
+        <input type="submit" name="cardPayment" value="Card Payment">
+        <input type="submit" name="instalment" value="Instalment">        
+    </form>
+    
+</body>
+</html>
