@@ -11,7 +11,6 @@ public class CashPayment implements Payment {
     public void execute() {
         // TODO register cash paid in db 
         System.out.printf("Paid by Cash %f", this.amount);
-        // System.out.printf("Paid by Cash %f", bill.getCharge());
     }
 
 }

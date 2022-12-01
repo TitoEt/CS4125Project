@@ -10,7 +10,6 @@ public class CardPayment implements Payment{
     }
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
         System.out.printf("Choose card payment amount %s", this.amount);
         strategy.pay(this.amount);      
     }    
