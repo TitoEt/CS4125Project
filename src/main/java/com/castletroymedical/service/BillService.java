@@ -1,11 +1,10 @@
 package com.castletroymedical.service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.castletroymedical.billing.InstalmentCalculator;
 import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.ChargeDTO;
 import com.castletroymedical.dto.InstalmentDTO;
@@ -47,18 +46,11 @@ public class BillService {
     }
 
     public List<InstalmentDTO> listInstalments(double total, double numberInstalments, int breakPeriod) {
-        List<InstalmentDTO> instalments = new ArrayList<InstalmentDTO>();
-        double instalment = total / numberInstalments;
-        LocalDate date = LocalDate.now();
-        for(int i=0; i < numberInstalments; i++) {            
-            instalments.add(new InstalmentDTO(instalment, date));
-            date = date.plusDays(breakPeriod);
-        }
-        return instalments;
+        return InstalmentCalculator.listInstalments(total, numberInstalments, breakPeriod);
     }
 
     public double calculateInstalment(double total, double numberInstalments) {
-        return total / numberInstalments;
+        return InstalmentCalculator.calculateInstalment(total, numberInstalments);
     }
 
 }
