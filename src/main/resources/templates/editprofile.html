@@ -13,13 +13,14 @@ Edit Details
     <link rel="stylesheet" type="text/css" th:href="@{resources/static/edit.css}" />
 
 </head>  
+<form action="/action_page.php" method="get">
 <div class="container rounded bg-white mt-5">
         <div class="row">
             <div class="col-md-8">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                            <h6>Back to home</h6>
+                        <a href="admin-dashboard.html"><button>Back to Dashboard</button></a>
                         </div>
                         <h6 class="text-right">Edit Profile</h6>
                     </div>
@@ -43,7 +44,7 @@ Edit Details
                     <div>
                       <label>Medical Card Holder?</label>
                        <div>
-                         <input type="radio" id="yes" name="option" value="Yes" />
+                         <input type="radio" id="yes" name="option" value="Yes" checked="checked" />
                          <label for="yes">Yes</label><br />
                          <input type="radio" id="no" name="option" value="No" />
                          <label for="no">No</label><br />
@@ -55,7 +56,7 @@ Edit Details
                     <div>
                         <input type="radio" id="yes" name="option" value="Yes" />
                         <label for="yes">Yes</label><br />
-                        <input type="radio" id="no" name="option" value="No" />
+                        <input type="radio" id="no" name="option" value="No" checked="checked" />
                         <label for="no">No</label><br />
                     </div>
                     </div>
@@ -66,4 +67,5 @@ Edit Details
             </div>
         </div>
     </div>
+</form>
 </head>
