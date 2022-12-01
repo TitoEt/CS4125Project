@@ -6,14 +6,8 @@ import java.util.List;
 public class PaymentGateway {
     private List<Payment> paymentList = new ArrayList<Payment>();
 
-    public void createPayment(CashPayment cashpay) {
-        paymentList.add(cashpay);
-    }
-    public void createPayment(CardMachine cardmachine) {
-        paymentList.add(cardmachine);
-    }
-    public void createPayment(StripePayment stripepayment) {
-        paymentList.add(stripepayment);
+    public void createPayment(Payment payment) {
+        paymentList.add(payment);
     }
 
     public void processTransaction() {
@@ -22,4 +16,5 @@ public class PaymentGateway {
         }
         paymentList.clear();
     }
-    
+
+}

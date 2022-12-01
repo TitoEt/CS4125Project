@@ -1,6 +1,6 @@
 package com.castletroymedical.paymentGateway;
 
-public class CardMachine implements CardStrategy, Payment{
+public class CardMachine implements CardStrategy{
     private double amount;
 
     public CardMachine() {
@@ -12,11 +12,5 @@ public class CardMachine implements CardStrategy, Payment{
 
     public void pay(double amount) {
         System.out.println("Paid by Card");
-    }
-
-    @Override
-    public void execute() {
-        // TODO Auto-generated method stub
-        
     }
 }
