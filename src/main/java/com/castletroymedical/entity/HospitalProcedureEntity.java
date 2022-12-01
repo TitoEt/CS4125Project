@@ -22,4 +22,9 @@ public class HospitalProcedureEntity {
 
     @Column(nullable = false)
     private double baseCharge;
+
+    public HospitalProcedureEntity(String procedureName, double baseCharge) {
+        this.procedureName = procedureName;
+        this.baseCharge = baseCharge;
+    }
 } 
