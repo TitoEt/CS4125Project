@@ -4,8 +4,8 @@ public class InstalmentPlanDTO {
     private double total;
     private int numberInstalments;
     private int breakPeriod;
-    private final int minInstalments = 2;
-    private final int minBreakPeriod = 30;
+    private final static int minInstalments = 2;
+    private final static int minBreakPeriod = 30;
 
     public InstalmentPlanDTO() {
     }

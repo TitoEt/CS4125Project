@@ -15,6 +15,7 @@ import com.castletroymedical.service.impl.UserServiceImpl;
 
 @Configuration
 public class LoadDatabase { 
+    private final String DEFAULTPASSWORD = "asd123qwe";
 
     @Bean
     CommandLineRunner initDatabase(HospitalProcedureRepository procedureRepository, UserServiceImpl userService, PatientServiceImpl patientService){
@@ -33,11 +34,11 @@ public class LoadDatabase {
             procedureRepository.save(new HospitalProcedureEntity(12L,"Vaccinations",40.0));
             procedureRepository.save(new HospitalProcedureEntity(13L,"Thyroid procedure",650.0));
             
-            userService.saveAdminUser(new UserDto("admin@castletroymedical.ie", "asd123qwe"));
+            userService.saveAdminUser(new UserDto("admin@castletroymedical.ie", DEFAULTPASSWORD));
             
-            UserDto user1 = new UserDto("example@user.com", "asd123qwe");
+            UserDto user1 = new UserDto("example@user.com", DEFAULTPASSWORD);
             userService.savePatientUser(user1);
-            UserDto user2 = new UserDto("second.example@user.com", "asd123qwe");
+            UserDto user2 = new UserDto("second.example@user.com", DEFAULTPASSWORD);
             userService.savePatientUser(user2);
 
             PatientDto patient1 = new PatientDto("4256153U", "Example", "Patient", new Date(System.currentTimeMillis()), "First Line, SecondLine, Third", "0854126978", "example@user.com", false, false); 
