@@ -8,9 +8,13 @@ import com.castletroymedical.dto.InstalmentDTO;
 
 public class InstalmentCalculator {
     public static List<InstalmentDTO> listInstalments(double total, double numberInstalments, int breakPeriod) {
+        return listInstalments(total, numberInstalments, breakPeriod, LocalDate.now());
+    }
+
+    public static List<InstalmentDTO> listInstalments(double total, double numberInstalments, int breakPeriod, LocalDate startDate) {
         List<InstalmentDTO> instalments = new ArrayList<InstalmentDTO>();
         double instalment = total / numberInstalments;
-        LocalDate date = LocalDate.now();
+        LocalDate date = startDate;
         for(int i=0; i < numberInstalments; i++) {            
             instalments.add(new InstalmentDTO(instalment, date));
             date = date.plusDays(breakPeriod);
