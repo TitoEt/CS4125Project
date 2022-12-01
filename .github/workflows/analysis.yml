@@ -7,13 +7,13 @@ on:
       - branch-*
   pull_request:
     types: [opened, synchronize, reopened]
-jobs:
-  setup-workflow:
-    uses: ./.github/workflows/setup.yml
-  
+jobs:   
   analyse:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up
+        uses: ./.github/workflows/setup.yml
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
