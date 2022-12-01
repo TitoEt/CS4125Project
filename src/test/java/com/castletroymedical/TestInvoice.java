@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.castletroymedical.billing.invoice.*;
 
 public class TestInvoice {
-    double expected = 150;
+    double expected = 100;
 
     @Test
     public void invoiceTest() {
