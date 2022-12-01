@@ -1,4 +1,4 @@
-package com.castletroymedical.gateway;
+package com.castletroymedical.paymentGateway;
 
 public class CardMachine implements CardStrategy{
     public void pay(double amount) {
