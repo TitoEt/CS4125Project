@@ -60,10 +60,10 @@ public class BillingController {
     }
 
     // TODO Potential strategy??
-    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
+    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
     public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
-        model.addAttribute("amount", bill.getAmount());
-        return "online-payment";
+        model.addAttribute("bill", bill);
+        return "card-payment";
     }
 
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "instalment")
@@ -86,7 +86,7 @@ public class BillingController {
     @PostMapping("/payInitialInstalment")
     public String payInitialInstalment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
-        return "online-payment";
+        return "stripe";
     }
 
 }

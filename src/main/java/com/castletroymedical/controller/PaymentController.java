@@ -12,21 +12,19 @@ import com.castletroymedical.service.PaymentService;
 
 
 @Controller
-
+@RequestMapping(path = "/admin")
 public class PaymentController {
     @Autowired PaymentService paymentService;
 
-    @RequestMapping(value = "/admin/cardPayment", method = RequestMethod.POST, params = "stripePayment")
+    @RequestMapping(value = "/cardPayment", method = RequestMethod.POST, params = "stripePayment")
     public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "stripe";
     }
-    @RequestMapping(value = "/admin/cardPayment", method = RequestMethod.POST, params = "cardOnSite")
+    
+    @RequestMapping(value = "/cardPayment", method = RequestMethod.POST, params = "cardOnSite")
     public String cardMachinePayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "card-approval";
-    }
-
-
-    
+    }   
 }

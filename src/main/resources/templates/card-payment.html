@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Choose Card Payment Method</title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head> 
 <body>
     <h2>Card Payment</h2>
     <form action="#" th:action="@{/admin/cardPayment}" th:object="${bill}" method="post">
+        <input type="hidden" th:value="${bill.amount}" name="amount">
         <input type="submit" name="stripePayment" value="Pay by Stripe">
-        <input type="submit" name="cardOnSite" value="Pay by card machine">    
+        <input type="submit" name="cardOnSite" value="Pay by card machine"> 
     </form>
 </body>
 </html>

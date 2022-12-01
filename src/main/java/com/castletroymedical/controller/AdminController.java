@@ -28,7 +28,7 @@ public class AdminController {
         return "allpatients";
     }
 
-    @GetMapping("/dashboard")
+    @RequestMapping("/dashboard")
     public String dashbaord(){
         return "admin-dashboard";
     }
