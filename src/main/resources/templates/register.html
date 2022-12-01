@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration</title>
-  <link rel="icon" type="image/x-icon" href="src/main/resources/favicon/favicon.ico">
+  <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
   <link rel="stylesheet" type="text/css" th:href="@{resources/static/form.css}">
 </head>
 <body>
-
+<section class='register' id='register'>
   <div th:if="${param.success}">
     <p>You've successfully registered to our app!</p>
   </div>
@@ -75,7 +75,7 @@
         <input type="radio" id="yes" name="option" value="Yes" />
         <label for="yes">Yes</label><br />
         <input type="radio" id="no" name="option" value="No" />
-        <label for="no">No</label><br />W
+        <label for="no">No</label><br />
       </div> 
     </div>
 
@@ -99,12 +99,6 @@
         <input type="radio" id="other" name="gender" value="Other" />
         <label for="other">Other</label><br /> 
       </div>
-    </div>
-
-    <div>
-      <label> Phone</label>
-      <input type="text" name="country code" value="+353" size="5" />
-      <input type="text" name="phone" size="10" /> <br /> 
     </div>
 
     <div>
@@ -162,6 +156,13 @@
 
     </form>
   </div>
+  </section>
+
+   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 casteltroymedical.com - All Rights Reserved.</p>
+  </div></footer>
+
+    <script  src="./script.js"></script>
 </body>
 </html>
 

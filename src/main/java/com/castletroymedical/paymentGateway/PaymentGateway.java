@@ -1,8 +1,7 @@
-package com.castletroymedical.gateway;
+package com.castletroymedical.paymentGateway;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.castletroymedical.billing.Bill;
 
 public class PaymentGateway {
     private List<Payment> paymentList = new ArrayList<Payment>();
