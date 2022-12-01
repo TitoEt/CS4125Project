@@ -1,12 +1,12 @@
-package com.castletroymedical.unitTest;
+package com.castletroymedical;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.castletroymedical.billing.invoice.*;
 
-public class InvoiceUnitTest {
+public class TestInvoice {
     double expected = 150;
 
     @Test
