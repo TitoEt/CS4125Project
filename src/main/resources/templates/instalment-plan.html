@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Patient Instalment Plan </title>
     <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
 </head> 
 <body>
     <h3>Instalment Plan Details</h3>
@@ -18,5 +19,12 @@
             <td th:text="${#numbers.formatCurrency(instalment.instalmentAmount)}"></td>
         </tr>
     </table>
+
+    <br>
+    <form action="#" th:action="@{/admin/payInitialInstalment}" th:object="${bill}" method="post">
+        <input type="hidden" th:value="${bill.amount}" name="amount">
+        <input type="submit" value="Agree Schedule and Make Initial Payment">
+    </form>
+
 </body>
 </html>

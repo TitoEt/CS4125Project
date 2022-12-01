@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Calculate Instalment Plan</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
 </head> 
 <body>
     <h2>Instalment Plan</h2>
     <form action="#" th:action="@{/admin/displayInstalmentPlan}" th:object="${instalmentPlan}" method="post">
         <label for="numberInstalments"> Enter number of instalments </label>
         <br>
-        <input type="number" id="numberInstalments" name="numberInstalments" th:field="*{numberInstalments}" min="2">
+        <input type="number" onfocus="this.value=''" id="numberInstalments" name="numberInstalments" th:field="*{numberInstalments}" th:min="${instalmentPlan.minInstalments}">
         <br>
         <label for="breakPeriod"> Enter break period between instalments </label>
         <br>
-        <input type="number" id="breakPeriod" name="breakPeriod" th:field="*{breakPeriod}" min="30">
+        <input type="number" onfocus="this.value=''" id="breakPeriod" name="breakPeriod" th:field="*{breakPeriod}" th:min="${instalmentPlan.minBreakPeriod}">
         <br>
         <br>
         <input type="submit" value="Create Instalment Plan">

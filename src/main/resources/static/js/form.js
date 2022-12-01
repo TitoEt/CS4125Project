@@ -25,3 +25,17 @@ function disableMonitoringQuestion() {
     document.getElementById("monitoringDuration").disabled = true;
     document.getElementById("monitoringDuration").value = 0;
 }
+
+function toggleStayQuestions() {
+    if(document.getElementById("hospitalStay").checked) {
+        enableStayQuestions();
+    }
+    else {
+        disableStayQuestions();
+    }
+}
+
+$(document).ready(function () {
+    console.log("Document ready");
+    disableStayQuestions();
+});

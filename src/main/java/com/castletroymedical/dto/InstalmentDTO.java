@@ -10,6 +10,9 @@ public class InstalmentDTO implements Bill {
     private LocalDate dateDue;
     private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
 
+    public InstalmentDTO(){
+    }
+    
     public InstalmentDTO(double instalmentAmount) {
         this.instalmentAmount = instalmentAmount;
         this.dateDue = LocalDate.now();

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Bill page </title>
+    <title>Make Online Payment</title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head> 
 <body>
-    <h2>Bills</h2>
+    <h2>Online payment <span th:text="${#numbers.formatCurrency(amount)}"></span></h2>
 </body>
 </html>

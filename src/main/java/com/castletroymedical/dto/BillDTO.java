@@ -3,6 +3,9 @@ package com.castletroymedical.dto;
 public class BillDTO { 
     private double amount;
 
+    public BillDTO() {        
+    }
+
     public BillDTO(double amount) {
         this.amount = amount;
     }   

@@ -4,6 +4,9 @@ public class ChargeDTO {
     private String description;
     private double amount;
 
+    public ChargeDTO() {        
+    }
+
     public ChargeDTO(String description, double amount) {
         this.description = description;
         this.amount = amount;

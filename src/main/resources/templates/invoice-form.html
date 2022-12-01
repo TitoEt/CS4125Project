@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Generate Invoice </title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" th:href="@{/style.css}">
-    <!-- <script th:src="@{/form.js}"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script th:src="@{/form.js}"></script>    
 </head> 
 <body>
     <h2>Calculate Patient Invoice</h2>
@@ -19,7 +21,7 @@
         <br>
         <select name="procedureList" th:field="*{procedure}">
             <option value="" selected> --- Select a procedure --- </option>
-            <option th:each="procedure: ${procedures}" th:value="${procedure.name}" th:text="${procedure.name}"></option>
+            <option th:each="procedure: ${procedures}" th:value="${procedure.procedureName}" th:text="${procedure.procedureName}"></option>
         </select>
         <br>
 
@@ -28,7 +30,7 @@
         <br>
 
         <label for="stay">Did the patient stay overnight?</label>
-        <input type="checkbox" id="hospitalStay" name="hospitalStay" th:checked="*{hospitalStay}" />
+        <input type="checkbox" id="hospitalStay" name="hospitalStay" th:checked="*{hospitalStay}" onclick="toggleStayQuestions()"/>
         <br>
         <label for="bedType">Please provide the room type</label>
         <br>
@@ -39,7 +41,7 @@
         <br>
         <label for="stayDuration">Duration of stay</label>
         <br>
-        <input type="number" id="stayDuration" name="stayDuration" th:field="*{stayDuration}" placeholder="0" min="0">
+        <input type="number" id="stayDuration" name="stayDuration" th:field="*{stayDuration}" min="0">
         <br>
 
         <label for="monitoring">Did the patient require monitoring?</label>
@@ -47,7 +49,7 @@
         <br>
         <label for="monitoringDuration">Duration of monitoring</label>
         <br>
-        <input type="number" id="monitoringDuration" name="monitoringDuration" th:field="*{monitoringDuration}" placeholder="0" min="0">
+        <input type="number" id="monitoringDuration" name="monitoringDuration" th:field="*{monitoringDuration}" min="0">
         <br>  
         <input type="hidden" th:value="${invoiceDetails.name}" name="name">
         <input type="hidden" th:value="${invoiceDetails.ppsn}" name="ppsn">
