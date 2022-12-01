@@ -8,8 +8,14 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:  
-      - name: Set up
-        uses: ./.github/workflows/setup.yml
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'temurin'
 
       - name: Maven Command
         run: mvn clean compile
