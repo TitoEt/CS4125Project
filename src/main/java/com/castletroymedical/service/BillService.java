@@ -17,10 +17,6 @@ public class BillService {
         return 150; // TODO use repository
     }
 
-    private String formatCharge(double charge) {
-        return String.format("%.2f", charge);
-    }
-
     public InvoiceBuilder createInvoiceBuilder(InvoiceDetailsDTO invoiceForm) {
         InvoiceBuilder builder = new InvoiceBuilder(invoiceForm.getPatientType());
         String procedure = invoiceForm.getProcedure();
@@ -50,7 +46,7 @@ public class BillService {
         return builder.getCharges();
     }
 
-    public List<InstalmentDTO> calculateInstalments(double total, int numberInstalments, int breakPeriod) {
+    public List<InstalmentDTO> listInstalments(double total, double numberInstalments, int breakPeriod) {
         List<InstalmentDTO> instalments = new ArrayList<InstalmentDTO>();
         double instalment = total / numberInstalments;
         LocalDate date = LocalDate.now();
@@ -59,6 +55,10 @@ public class BillService {
             date = date.plusDays(breakPeriod);
         }
         return instalments;
+    }
+
+    public double calculateInstalment(double total, double numberInstalments) {
+        return total / numberInstalments;
     }
 
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Patient Invoice </title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" th:href="@{/style.css}">
 </head> 
 <body>
@@ -28,7 +29,7 @@
         <br>
         <input type="hidden" th:value="${bill.amount}" name="amount">
         <input type="submit" name="cash" value="Cash">
-        <input type="submit" name="onlinePayment" value="Online Payment">
+        <input type="submit" name="cardPayment" value="Card Payment">
         <input type="submit" name="instalment" value="Instalment">        
     </form>
     

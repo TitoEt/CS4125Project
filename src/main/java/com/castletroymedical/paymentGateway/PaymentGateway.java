@@ -1,4 +1,4 @@
-package com.castletroymedical.gateway;
+package com.castletroymedical.paymentGateway;
 
 import java.util.ArrayList;
 import java.util.List;

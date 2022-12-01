@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.castletroymedical.billing.InvoiceBuilder;
-import com.castletroymedical.database.entity.ProcedureEntity;
+import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.service.BillService;
 import com.castletroymedical.service.PatientService;
 import com.castletroymedical.dto.BillDTO;
@@ -22,25 +22,26 @@ import com.castletroymedical.dto.InstalmentPlanDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
 
 @Controller
+@RequestMapping(path = "/admin")
 public class BillingController {
     @Autowired
     BillService billService;
     @Autowired
     PatientService patientService; // TODO service gets patient and type
 
-    @GetMapping("/admin/generateInvoice/{ppsn}")
+    @GetMapping("/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
         model.addAttribute("invoiceDetails", new InvoiceDetailsDTO("name", ppsn, "private"));
         
-        List<ProcedureEntity> procedures = new ArrayList<ProcedureEntity>(); // TODO get procedure list
-        procedures.add(new ProcedureEntity("Xray", 100));
-        procedures.add(new ProcedureEntity("Hip Surgery", 350));
-        procedures.add(new ProcedureEntity("Transplant", 480));
+        List<HospitalProcedureDto> procedures = new ArrayList<HospitalProcedureDto>(); // TODO get procedure list
+        procedures.add(new HospitalProcedureDto("Xray", 100));
+        procedures.add(new HospitalProcedureDto("Hip Surgery", 350));
+        procedures.add(new HospitalProcedureDto("Transplant", 480));
         model.addAttribute("procedures", procedures);
         return "invoice-form";
     }
 
-    @PostMapping("/admin/displayInvoice")
+    @PostMapping("/displayInvoice")
     public String displayInvoice(@ModelAttribute InvoiceDetailsDTO invoiceDetails, Model model){ 
         InvoiceBuilder builder = billService.createInvoiceBuilder(invoiceDetails);
         model.addAttribute("invoiceDetails", invoiceDetails);
@@ -52,31 +53,40 @@ public class BillingController {
 
     // TODO save invoice using service method (need ppsn)
     
-    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "cash")
+    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cash")
     public String cashPayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "cash-approval";
     }
 
     // TODO Potential strategy??
-    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "onlinePayment")
-    public String onlinePayment(@ModelAttribute BillDTO bill) {
-        return "online-payment";
+    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
+    public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
+        model.addAttribute("bill", bill);
+        return "card-payment";
     }
 
-    @RequestMapping(value = "/admin/paymentMethod", method = RequestMethod.POST, params = "instalment")
+    @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "instalment")
     public String instalment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("instalmentPlan", new InstalmentPlanDTO(bill.getAmount()));
         return "instalment-form";
     }
 
-    @PostMapping("/admin/displayInstalmentPlan")
+    @PostMapping("/displayInstalmentPlan")
     public String displayInstalmentPlan(@ModelAttribute InstalmentPlanDTO instalmentPlan, Model model){ 
         double total = instalmentPlan.getTotal();
+        double numberInstalments = instalmentPlan.getNumberInstalments();
         model.addAttribute("total", total);
-        model.addAttribute("instalments", billService.calculateInstalments(total, instalmentPlan.getNumberInstalments(), instalmentPlan.getBreakPeriod()));
+        model.addAttribute("instalments", billService.listInstalments(total, numberInstalments, instalmentPlan.getBreakPeriod()));
+        model.addAttribute("bill", new BillDTO(billService.calculateInstalment(total, numberInstalments)));
         // TODO save instalment plan
         return "instalment-plan";
+    }
+    
+    @PostMapping("/payInitialInstalment")
+    public String payInitialInstalment(@ModelAttribute BillDTO bill, Model model) {
+        model.addAttribute("amount", bill.getAmount());
+        return "stripe";
     }
 
 }

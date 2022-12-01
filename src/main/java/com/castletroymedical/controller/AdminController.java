@@ -27,4 +27,9 @@ public class AdminController {
         model.addAttribute("patients", patients);
         return "allpatients";
     }
+
+    @RequestMapping("/dashboard")
+    public String dashbaord(){
+        return "admin-dashboard";
+    }
 }
