@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -10,7 +10,7 @@
     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}" />
   </head>
-  <form method="post" th:action="@{/index}" role="form">
+  <form method="post" th:action="@{/}" role="form">
     <div class="container">
       <label for="username"><b>Email</b></label>
       <input type="text" placeholder="Email" name="username" required />

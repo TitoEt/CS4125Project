@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+</head>
+<body>
+    <div class="row">
+        <h1> Patient Details </h1>
+    </div>
+
+    <div>
+        <p>PPSN</p>
+        <p th:text="*{patient.ppsn}"></p>
+        <br><br>
+        <p>Name</p> 
+        <p th:text="*{patient.firstName}"> </p> 
+        <p th:text="*{patient.lastName}"></p>
+        <br><br>
+        <p>Email</p>
+        <p th:text="*{patient.email}"></p>
+        <br><br>
+        <p>D.O.B</p>
+        <p th:text="*{#dates.format(patient.dob, 'dd/MM/yyyy')}"></p>
+        <br><br>
+        <p>Address</p>
+        <p th:text="*{patient.address}"></p>
+        <br><br>
+        <p>Phone Number</p>
+        <p th:text="*{patient.phoneNumber}"></p>
+        <br><br>
+        <p>Medical Card Holder</p>
+        <p th:text="*{patient.medicalCardHolder}"></p>
+        <br><br>
+        <p>Insured</p>
+        <p th:text="*{patient.insured}"></p>
+    </div>
+    <br><br>
+<!-- 
+    <div>
+        <a th:href="@{/admin/generateInvoice/${patient.ppsn}}">Generate Invoice</a>
+    </div> -->
+</body>
+</html>

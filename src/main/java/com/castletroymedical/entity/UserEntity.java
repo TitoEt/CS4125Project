@@ -22,7 +22,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
     
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
             joinColumns={@JoinColumn(name="email", referencedColumnName="email")},

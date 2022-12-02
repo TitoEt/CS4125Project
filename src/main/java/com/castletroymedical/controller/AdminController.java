@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.dto.PatientDto;
@@ -61,6 +62,27 @@ public class AdminController {
         patientService.savePatient(patient);
         return "successfulregister";
     }
+
+    @RequestMapping("/patientDetails")
+    public String findPatient(Model model, @RequestParam String ppsn){
+        PatientDto patient = patientService.getPatientByPpsn(ppsn);
+        model.addAttribute("patient", patient);
+        return "patientprofile";
+    }
+
+    // @GetMapping("/findPatient")
+    // public String showPatientSearch(Model model){
+    //     PatientDto patientDto = new PatientDto();
+    //     model.addAttribute("patient", patientDto);
+    //     return "admin-search";
+    // }
+
+    // @PostMapping("/patientFind/profile")
+    // public String patientProfile(@Valid @ModelAttribute("patient") PatientDto patient, BindingResult result, Model model) {
+    //     patient = patientService.getPatientByPpsn(patient.getPpsn());
+    //     model.addAttribute("patient", patient);
+    //     return "patientprofile";
+    // }
 
     // <ISHA> List all patients in a table
     @GetMapping("/allPatients")

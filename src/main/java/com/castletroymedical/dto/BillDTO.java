@@ -26,5 +26,5 @@ public class BillDTO {
 
     private String status;
 
-    double totalCharge;
+    private double totalCharge;
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.HospitalProcedureDto;
@@ -40,15 +41,15 @@ public class BillingController {
     @Autowired
     ChargeService chargeService;
 
-    @GetMapping("/generateInvoice/{ppsn}")
-    public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
+    @RequestMapping("/generateInvoice")
+    public String invoiceForm(Model model,  @RequestParam String ppsn) {
         PatientDto patient = patientService.getPatientByPpsn(ppsn);
         model.addAttribute("invoiceDetails", new InvoiceDetailsDTO(patient.getFirstName() + " " + patient.getLastName(), ppsn, patientService.getPatientType(patient)));
-        
+
         List<HospitalProcedureDto> procedures = procedureService.findAllProcedures();
         model.addAttribute("procedures", procedures);
         return "invoice-form";
-    }
+  }
 
     @PostMapping("/displayInvoice")
     public String displayInvoice(@ModelAttribute InvoiceDetailsDTO invoiceDetails, Model model){
