@@ -6,9 +6,13 @@
     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
-<form action="/action_page.php">
-<a href="editprofile.html"><button>Edit Profile</button></a>
-<a href="viewbills.html"><button>View Bills</button></a>
+
+<body>
+<a th:href="@{/patient/editProfile}"><button>Edit Profile</button></a>
+<a th:href="@{/patient/viewBills}"><button>View Bills</button></a>
+<a th:href="@{/patient/outstandingBills}"><button>Pay Outstanding Bills</button></a>
+<a th:href="@{/patient/requestPlan}"><button> Request Instalment Plan </button></a>
+<a th:href="@{/patient/viewPlan}"><button> View Instalment Plan </button></a>
  <!-- 
         needs a pop up for appoitnment notifs
     -->
@@ -27,7 +31,7 @@ window.addEventListener("load", function(){
 document.querySelector("#close").addEventListener("click", function(){
     document.querySelector(".app_notif").style.display = "none";
 });
-    </script>
- </div>
-</form>
+</script>
+</div>
+</body>
 </html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Request Instalment Plan</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+</head> 
+<body>
+    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+        <a th:href="@{/patient/dashboard}"><button>Back to Dashboard</button></a>
+    </div>
+    <h2>Instalment Plan Seeking</h2>
+    <form action="#" th:action="@{/patient/viewPlan}" th:object="${instalmentPlan}" method="post">
+        <label for="numberInstalments"> Enter number of instalments </label>
+        <br>
+        <input type="number" onfocus="this.value=''" id="numberInstalments" name="numberInstalments" th:field="*{numberInstalments}" th:min="${instalmentPlan.minInstalments}">
+        <br>
+        <label for="breakPeriod"> Enter break period between instalments </label>
+        <br>
+        <input type="number" onfocus="this.value=''" id="breakPeriod" name="breakPeriod" th:field="*{breakPeriod}" th:min="${instalmentPlan.minBreakPeriod}">
+        <br>
+        <br>
+        <input type="submit" value="Request Instalment Plan">
+    </form>
+</body>
+</html>

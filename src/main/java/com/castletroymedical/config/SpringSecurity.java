@@ -29,6 +29,7 @@ public class SpringSecurity{
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/stripe/**").permitAll()
                 .requestMatchers("/admin/**").permitAll()
+                .requestMatchers("/patient/**").permitAll()
                 .requestMatchers("/register/**").hasRole("ADMIN")
                 .requestMatchers("/hospital-procedure/**").hasRole("ADMIN");
                

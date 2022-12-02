@@ -3,48 +3,49 @@
     <html lang="en" xmlns:th="http://www.thymeleaf.org/"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head> 
-<title>  
-Edit Details
-</title>  
-<meta charset="UTF-8">
+    <title> Edit Details</title>  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Edit Details</title>
     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">    
     <link rel="stylesheet" type="text/css" th:href="@{resources/static/edit.css}" />
 
-</head>  
-<form action="/action_page.php" method="get">
+</head> 
+<body>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+        <a th:href="@{/patient/dashboard}"><button>Back to Dashboard</button></a>
+    </div>
+    <h6 class="text-right">Edit Profile</h6>
+</div> 
+
+<!-- TODO mapping th:action="@{}"-->
+<form action="#" method="post">
 <div class="container rounded bg-white mt-5">
         <div class="row">
             <div class="col-md-8">
                 <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                        <a href="admin-dashboard.html"><button>Back to Dashboard</button></a>
-                        </div>
-                        <h6 class="text-right">Edit Profile</h6>
-                    </div>
+                    
                     <div class="row mt-2">
                         <label> Full Name </label> 
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Full name" value="Tito Etimiri"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Joe Blogs"></div>
                     </div>
 
                     <div class="details">
                         <label> Email </label> 
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Email" value="csasey640@gmail.com"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="user@example.com"></div>
                         <label> Phone Number </label> 
-                        <div class="col-md-6"><input type="text" class="form-control" value="+353085969668" placeholder="Phone number"></div>
+                        <div class="col-md-6"><input type="text" class="form-control" placeholder="+353085969668"></div>
                     </div>
                     <div class="details">
                         <label> Address </label> 
-                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Address" value="Apple Street, Cork city"></div>
-                        <div class="col-md-6"><input type="text" class="form-control" value="Ireland" placeholder="Country"></div>
-                    </div>
+                        <div class="col-md-6"><textarea id="address" name="address" rows="4" cols="50"></textarea></div>
+                     </div>
 
                     <div>
                       <label>Medical Card Holder?</label>
                        <div>
-                         <input type="radio" id="yes" name="option" value="Yes" checked="checked" />
+                         <input type="radio" id="yes" name="option" value="Yes" />
                          <label for="yes">Yes</label><br />
                          <input type="radio" id="no" name="option" value="No" />
                          <label for="no">No</label><br />
@@ -56,7 +57,7 @@ Edit Details
                     <div>
                         <input type="radio" id="yes" name="option" value="Yes" />
                         <label for="yes">Yes</label><br />
-                        <input type="radio" id="no" name="option" value="No" checked="checked" />
+                        <input type="radio" id="no" name="option" value="No" />
                         <label for="no">No</label><br />
                     </div>
                     </div>
@@ -68,4 +69,5 @@ Edit Details
         </div>
     </div>
 </form>
+</body> 
 </head>
