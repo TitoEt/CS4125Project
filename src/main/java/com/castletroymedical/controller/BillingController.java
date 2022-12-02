@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.service.BillService;
+import com.castletroymedical.service.HospitalProcedureService;
 import com.castletroymedical.service.PatientService;
 import com.castletroymedical.dto.BillDTO;
 import com.castletroymedical.dto.InstalmentPlanDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
+import com.castletroymedical.dto.PatientDto;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -27,16 +29,16 @@ public class BillingController {
     @Autowired
     BillService billService;
     @Autowired
-    PatientService patientService; // TODO service gets patient and type
+    PatientService patientService; // service gets patient and type
+    @Autowired
+    HospitalProcedureService procedureService;
 
     @GetMapping("/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
-        model.addAttribute("invoiceDetails", new InvoiceDetailsDTO("name", ppsn, "private"));
+        PatientDto patient = patientService.getPatientByPpsn(ppsn);
+        model.addAttribute("invoiceDetails", new InvoiceDetailsDTO(patient.getFirstName() + " " + patient.getLastName(), ppsn, patientService.getPatientType(patient)));
         
-        List<HospitalProcedureDto> procedures = new ArrayList<HospitalProcedureDto>(); // TODO get procedure list
-        procedures.add(new HospitalProcedureDto("Xray", 100));
-        procedures.add(new HospitalProcedureDto("Hip Surgery", 350));
-        procedures.add(new HospitalProcedureDto("Transplant", 480));
+        List<HospitalProcedureDto> procedures = procedureService.findAllProcedures();
         model.addAttribute("procedures", procedures);
         return "invoice-form";
     }
@@ -47,11 +49,15 @@ public class BillingController {
         model.addAttribute("invoiceDetails", invoiceDetails);
         model.addAttribute("bill", new BillDTO(billService.calculateInvoice(builder)));
         model.addAttribute("charges", billService.listCharges(builder));
+
+        // <ISHA> is this where i save it???????? Charges can't be saved without a bill ID
+
         return "invoice";
         // TODO save invidicual charges - decorators
     }
 
     // TODO save invoice using service method (need ppsn)
+    // <ISHA> where's this supposed to be in the method above or below ????
     
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cash")
     public String cashPayment(@ModelAttribute BillDTO bill, Model model) {

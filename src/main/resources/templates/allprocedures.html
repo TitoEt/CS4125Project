@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+        <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+    </head>
+    <body>
+        <div>
+            <div>
+                <h1> Hospital Procedures </h1>
+            </div>
+            <br>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Procedure Name</th>
+                            <th>Base Charge</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="procedure: ${procedures}">
+                            <!-- <td th:text="${procedure.procedureId}"></td> -->
+                            <td th:text="${procedure.procedureName}"></td>
+                            <td th:text="${procedure.baseCharge}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <form action="#" th:action="@{/admin/dashboard}">
+                    <label></label>
+                    <br>
+                    <input type="submit" value="Return to Dasboard">    
+                </form>
+            </div>
+        </div>
+        </body>
+    </body>
+</html>

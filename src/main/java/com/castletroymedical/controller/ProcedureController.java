@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.entity.HospitalProcedureEntity;
-import com.castletroymedical.service.impl.HospitalProcedureServiceImpl;
+import com.castletroymedical.service.HospitalProcedureService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping(path = "/hospital-procedure")
 public class ProcedureController {
-    private HospitalProcedureServiceImpl procedureService;
+    private HospitalProcedureService procedureService;
 
-    public ProcedureController(HospitalProcedureServiceImpl procedureService){
+    public ProcedureController(HospitalProcedureService procedureService){
         this.procedureService = procedureService;
     }
 
