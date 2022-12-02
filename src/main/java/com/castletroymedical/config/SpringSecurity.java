@@ -25,13 +25,12 @@ public class SpringSecurity{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/stripe/**").permitAll()
-                .requestMatchers("/admin/**").permitAll()
-                .requestMatchers("/patient/**").permitAll()
-                .requestMatchers("/register/**").hasRole("ADMIN")
-                .requestMatchers("/hospital-procedure/**").hasRole("ADMIN");
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/stripe/**").permitAll()
+                .antMatchers("/admin/**").permitAll()
+                .antMatchers("/register/**").hasRole("ADMIN")
+                .antMatchers("/hospital-procedure/**").hasRole("ADMIN");
                
         return http.build();
     }
