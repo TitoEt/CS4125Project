@@ -2,9 +2,7 @@
 var stripe = Stripe("pk_test_51LzLqMAjbSseX4yp7aLwDVsCQWugPNmLVtgiOvVTGTGAikl1tgHwHi0zxIDzWYc1SshKU52UMzwgjjkNltBtWHYE006yYmfuWD");
 
 // The items the customer wants to buy
-var purchase = {
-  items: [{ id: "xl-tshirt" }]
-};
+var purchase = document.getElementById("paymentAmount").innerHTML;
 
 // Disable the button until we have Stripe set up on the page
 document.querySelector("button").disabled = true;
@@ -16,6 +14,7 @@ fetch("/create-payment-intent", {
   body: JSON.stringify(purchase)
 })
   .then(function(result) {
+    console.log(result.json);
     return result.json();
   })
   .then(function(data) {
