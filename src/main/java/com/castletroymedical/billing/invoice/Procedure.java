@@ -10,6 +10,7 @@ public class Procedure extends InvoiceDecorator {
     this.baseCharge = baseCharge;
   }
 
+  @Override
   public double getCharge(){
     return super.getCharge() + this.state.calculateProcedureCost(baseCharge);
   }

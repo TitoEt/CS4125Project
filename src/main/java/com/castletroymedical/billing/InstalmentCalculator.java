@@ -7,6 +7,10 @@ import java.util.List;
 import com.castletroymedical.dto.InstalmentDTO;
 
 public class InstalmentCalculator {
+
+    private InstalmentCalculator(){
+    }
+
     public static List<InstalmentDTO> listInstalments(double total, double numberInstalments, int breakPeriod) {
         return listInstalments(total, numberInstalments, breakPeriod, LocalDate.now());
     }

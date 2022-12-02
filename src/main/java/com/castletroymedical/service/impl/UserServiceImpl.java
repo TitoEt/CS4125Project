@@ -1,6 +1,6 @@
 package com.castletroymedical.service.impl;
 
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -19,17 +19,16 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private RoleRepository roleRepository;
     private PatientServiceImpl patientService;
-    // private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository,
             RoleRepository roleRepository,
-            PatientServiceImpl patientService)
-    // PasswordEncoder passwordEncoder)
+            PatientServiceImpl patientService, PasswordEncoder passwordEncoder)
     {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.patientService = patientService;
-        // this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void registerPatientUser(UserDto userDto, PatientDto patientDto) {
@@ -41,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public void savePatientUser(UserDto userDto) {
         UserEntity user = new UserEntity();
         user.setEmail(userDto.getEmail());
-        // user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         String roleName = "ROLE_PATIENT";
         RoleEntity role = roleRepository.findByNameIgnoreCase(roleName);
         if (role == null)
@@ -61,7 +60,7 @@ public class UserServiceImpl implements UserService {
     public void saveAdminUser(UserDto userDto) {
         UserEntity user = new UserEntity();
         user.setEmail(userDto.getEmail());
-        // user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         String roleName = "ROLE_ADMIN";
         RoleEntity role = roleRepository.findByNameIgnoreCase(roleName);
         if (role == null)
