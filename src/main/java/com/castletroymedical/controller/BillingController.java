@@ -20,7 +20,7 @@ import com.castletroymedical.service.ChargeService;
 import com.castletroymedical.service.HospitalProcedureService;
 import com.castletroymedical.service.PatientService;
 import com.castletroymedical.dto.BillAmountDTO;
-import com.castletroymedical.dto.BillDto;
+import com.castletroymedical.dto.BillDTO;
 import com.castletroymedical.dto.ChargeDTO;
 import com.castletroymedical.dto.InstalmentPlanDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
@@ -81,7 +81,7 @@ public class BillingController {
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "instalment")
     public String instalment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("instalmentPlan", new InstalmentPlanDTO(bill.getAmount()));
-        BillDto bd = billService.findBill(bill.getBillID());
+        BillDTO bd = billService.findBill(bill.getBillID());
         bd.setInstalmentPlan(true);
         billService.saveBill(bd);
         return "instalment-form";

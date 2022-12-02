@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.castletroymedical.billing.InstalmentCalculator;
 import com.castletroymedical.billing.InvoiceBuilder;
-import com.castletroymedical.dto.BillDto; 
+import com.castletroymedical.dto.BillDTO; 
 import com.castletroymedical.dto.InstalmentDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
 import com.castletroymedical.entity.BillEntity;
@@ -61,20 +61,20 @@ public class BillService {
         return InstalmentCalculator.calculateInstalment(total, numberInstalments);
     }
 
-    public BillDto findBill(Long id){
+    public BillDTO findBill(Long id){
         BillEntity bill = billRepository.findById(id).orElse(null);
         return mapBillEntityToDto(bill);
     }
 
-    private BillDto mapBillEntityToDto(BillEntity billEntity){
-        return new BillDto(billEntity.getBillId(), billEntity.getPatientPpsn().getPpsn(), billEntity.getDateIssued(), billEntity.getDueDate(), billEntity.getDatePaid(), billEntity.isInstalmentPlan(), billEntity.getStatus(), billEntity.getTotalAmount());
+    private BillDTO mapBillEntityToDto(BillEntity billEntity){
+        return new BillDTO(billEntity.getBillId(), billEntity.getPatientPpsn().getPpsn(), billEntity.getDateIssued(), billEntity.getDueDate(), billEntity.getDatePaid(), billEntity.isInstalmentPlan(), billEntity.getStatus(), billEntity.getTotalAmount());
     }
 
-    public void saveBill(BillDto billDto){
+    public void saveBill(BillDTO billDto){
         billRepository.save(mapBillDtoToEntity(billDto));
     }
 
-    private BillEntity mapBillDtoToEntity(BillDto billDto){
+    private BillEntity mapBillDtoToEntity(BillDTO billDto){
         BillEntity billEntity = new BillEntity();
         billEntity.setBillId(billDto.getBillId());
         billEntity.setDateIssued(billDto.getDateIssued());

@@ -11,20 +11,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BillDto {
+public class BillDTO {
     private Long billId;
     
     private String patientPpsn;
 
-    Date dateIssued;
+    private Date dateIssued;
     
-    Date dueDate;
+    private Date dueDate;
 
-    Date datePaid;
+    private Date datePaid;
 
-    boolean instalmentPlan;
+    private boolean instalmentPlan;
 
-    String status;
+    private String status;
 
     double totalCharge;
 }
