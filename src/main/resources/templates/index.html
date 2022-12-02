@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Log in</title>
-    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}">   
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}" />
-</head> 
-<form action="/action_page.php">
-  <div class="container">
-    <label for="uname"><b>Email</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+  </head>
+  <form method="post" th:action="@{/index}" role="form">
+    <div class="container">
+      <label for="username"><b>Email</b></label>
+      <input type="text" placeholder="Email" name="username" required />
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Password" name="password" required />
 
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>  
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</html>

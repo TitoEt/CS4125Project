@@ -5,8 +5,8 @@ import java.util.Date;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
- 
+import org.springframework.format.annotation.DateTimeFormat; 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +25,7 @@ public class PatientDto {
     @NotEmpty
     private String lastName;
     
-    @NotEmpty
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob; 
  
     @NotEmpty

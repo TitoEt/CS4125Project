@@ -10,14 +10,15 @@ import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.ChargeDTO;
 import com.castletroymedical.dto.InstalmentDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
-import com.castletroymedical.service.impl.HospitalProcedureServiceImpl;
+import com.castletroymedical.repository.HospitalProcedureRepository;
 
 @Service
 public class BillService {
-    @Autowired HospitalProcedureServiceImpl procedureService;
-    
+    @Autowired
+    HospitalProcedureRepository procedureRepository;
+
     public double getProcedureCharge(String name) {
-        return procedureService.findByProcedureName(name).get().getBaseCharge();
+       return procedureRepository.findByProcedureNameIgnoreCase(name).get().getBaseCharge();
     }
 
     public InvoiceBuilder createInvoiceBuilder(InvoiceDetailsDTO invoiceForm) {

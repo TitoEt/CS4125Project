@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Patient Successfully Registered</h1>
+        <p>Account is registered with email and PPSN as password</p>
+    </div>
+    
+    <div>
+        <form action="#" th:action="@{/admin/dashboard}">
+            <label></label>
+            <br>
+            <input type="submit" value="Return to Dasboard">    
+        </form>
+    </div>
+</body>
+</html>

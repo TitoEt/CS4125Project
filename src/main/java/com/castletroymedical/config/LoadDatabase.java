@@ -10,15 +10,15 @@ import com.castletroymedical.dto.PatientDto;
 import com.castletroymedical.dto.UserDto;
 import com.castletroymedical.entity.HospitalProcedureEntity;
 import com.castletroymedical.repository.HospitalProcedureRepository;
-import com.castletroymedical.service.impl.PatientServiceImpl;
-import com.castletroymedical.service.impl.UserServiceImpl;
+import com.castletroymedical.service.PatientService;
+import com.castletroymedical.service.UserService;
 
 @Configuration
 public class LoadDatabase { 
     private final String DEFAULTPASSWORD = "asd123qwe";
 
     @Bean
-    CommandLineRunner initDatabase(HospitalProcedureRepository procedureRepository, UserServiceImpl userService, PatientServiceImpl patientService){
+    CommandLineRunner initDatabase(HospitalProcedureRepository procedureRepository, UserService userService, PatientService patientService){
         return args -> {
             procedureRepository.save(new HospitalProcedureEntity(1L, "Brain Stem Augmentation",8000.0));
             procedureRepository.save(new HospitalProcedureEntity(2L,"Spinal Realignment",2300.0));

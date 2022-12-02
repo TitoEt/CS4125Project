@@ -1,69 +1,48 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en">
-    <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
-     
-    <!-- 
-       create a card for outstanding
-    installment plan requests
-    sub card will have pt name, date of request and ppsn
-    on each sub card have a accept or decline button
-    accept leads to generate installment plan page
-    decline creates a popup in pt profile
-    -->
-    
-    <script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "Organization",
-		"name": "",
-		"logo": "images/hospitalimage.png"
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="dashboard">
-    <meta property="og:type" content="website">
-
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+  <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+  <title>Admin Dashboard</title>
 </head>
-  <body class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="sec-2f3a"><div class="u-clearfix u-sheet u-sheet-1">
-<form action="/action_page.php" method="get">
-<div class="requests">
-  <div class="container">
-    <h3><b>Installment Plan Requests</b></h3>   
-    <h4><b>John Doe</b></h4> 
-    <p>Transaction A</p> 
-    <p>
-      <script> document.write(new Date().toLocaleDateString()); </script> <!--this should be date of request-->
-    </p>
-      <div>
-        <input type="radio" id="accept" name="option" value="accept" />
-        <label for="yes">Accept</label><br />
-        <input type="radio" id="decline" name="option" value="decline" />
-        <label for="no">Decline</label><br />
-    </div>
-    <input type="button" value="Submit" />
+<body>
+  <div>
+    <h1>Admin Dashboard</h1>
   </div>
-</div>
 
-      </div></header>
-    <section class="u-clearfix u-section-1" id="sec-aa7e">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Find Patient</a> <!--search bar so admin can search by ppsn and email -->
-        <a th:href="@{/admin/viewAllPatients}" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">List All Patients</a>
-        <a th:href="@{/admin/registerPatient}" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">Register Patient</a>
-      </div>
-    </section>
-  </div>
-</form>
-   </body> 
-   
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 castletroymedical.com - All Rights Reserved.</p>
-      </div>
-    </footer>
+  <div>
+    <form action="#" th:action="@{/admin/findPatient}">
+      <label></label>
+      <br>
+      <input type="submit" value="Find Patient">        
+    </form>
   
+    <form action="#" th:action="@{/admin/allPatients}">
+      <label></label>
+      <br>
+      <input type="submit" value="Get All Patients">    
+    </form>
+  
+    <form action="#" th:action="@{/admin/register}">
+      <label for="payment"></label>
+      <br>
+      <input type="submit" value="Register Patient">    
+    </form>
+  
+    <form action="#" th:action="@{/admin/allProcedures}">
+      <label></label>
+      <br>
+      <input type="submit" value="View All Procedures">        
+    </form>
+  </div>
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
+    <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 castletroymedical.com - All Rights Reserved.</p>
+  </div>
+  </footer>
+  
+</body>
 </html>

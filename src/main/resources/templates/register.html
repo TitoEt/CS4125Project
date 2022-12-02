@@ -30,166 +30,188 @@
     </div>
 
     <div>
-      <label>Last Name</label>
-      <input id = "lastName"
-             name="lastName"
-             placeholder="Enter last name"
-             th:field="*{lastName}"
-             type="text"
-      />
-      <p th:errors="*{lastName}" class="text-danger"
-         th:if="${#fields.hasErrors('lastName')}">
-      </p>
+      <h1>Register Patient Details</h1>
     </div>
-
-    <div>
-      <label for="Date of Birth">Date of Birth</label>
-      <input name ="dob"
-             placeholder="DD/MM/YYYY"
-             th:field="*{dob}"
-             type="date"
-             data-date-format="dd/mm/yyyy"
-             id="dob"
-      />
-      <p th:errors="*{dob}" class="text-danger"
-         th:if="${#fields.hasErrors('dob')}">
-      </p> 
-    </div> 
-
-    <div>
-      <label>PPSN</label>
-      <input id = "ppsn"
-             name="ppsn"
-             placeholder="0000000XX"
-             th:field="*{ppsn}"
-             type="text"
-      />
-      <p th:errors="*{ppsn}" class="text-danger"
-         th:if="${#fields.hasErrors('ppsn')}">
-      </p>
-    </div>
-
-    <div>
-      <label>Medical Card Holder?</label>
-      <div>
-        <input type="radio" id="yes" name="option" value="Yes" />
-        <label for="yes">Yes</label><br />
-        <input type="radio" id="no" name="option" value="No" />
-        <label for="no">No</label><br />
-      </div> 
-    </div>
-
-    <div>
-      <label>Insurance Coverage?</label>
-      <div>
-        <input type="radio" id="yes" name="option" value="Yes" />
-        <label for="yes">Yes</label><br />
-        <input type="radio" id="no" name="option" value="No" />
-        <label for="no">No</label><br />
-      </div>
-    </div>
-
-    <div>
-      <div>
-        <label>Gender</label><br />
-        <input type="radio" id="male" name="gender" value="Male" />
-        <label for="male">Male</label><br />
-        <input type="radio" id="female" name="gender" value="Female" />
-        <label for="female">Female</label><br />
-        <input type="radio" id="other" name="gender" value="Other" />
-        <label for="other">Other</label><br /> 
-      </div>
-    </div>
-
-    <div>
-      <label>Phone Number</label>
-      <input id = "phoneNumber"
-             name="phoneNumber"
-             placeholder="08XXXXXXXX"
-             th:field="*{ppsn}"
-             type="text"
-      />
-      <p th:errors="*{phoneNumber}" class="text-danger"
-         th:if="${#fields.hasErrors('phoneNumber')}">
-      </p>
-    </div>
-  
-    <div>
-      <label>Address</label> 
-      <textarea cols="80" rows="4" value="address"> </textarea> 
-    </div>
-
-    <div>
-      <label>Email</label>
-      <input class="form-control"
-             id="email"
-             name="email"
-             placeholder="Enter email address"
-             th:field="*{email}"
-             type="email"
-      />
-      <p th:errors="*{email}" class="text-danger"
-         th:if="${#fields.hasErrors('email')}">
-      </p>
-  </div>
-      
-    <div>
-      <label>Password</label>
-      <input class="form-control"
-              id="password"
-              name="password"
-              placeholder="Enter password"
-              th:field="*{password}"
-              type="password"
-      />
-      <p th:errors="*{password}" class="text-danger"
-          th:if="${#fields.hasErrors('password')}">
-      </p>
-    </div>
-
-    <div>
-      Re-type password:
-      <input type="Password" id="repass" name="repass" /> <br />
-      <br />
-      <input type="button" value="Register" />
-    </div>
-
-    </form>
-  </div>
-  </section>
-
-   <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 casteltroymedical.com - All Rights Reserved.</p>
-  </div></footer>
-
-    <script  src="./script.js"></script>
-</body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <title>Registration Page</title>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Registration</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="src/main/resources/favicon/favicon.ico"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      th:href="@{resources/static/form.css}"
-    />
-  </head>
-  <br />
-  <br />
-  <body>
     
+    <section>  
+      <div>
+        <form
+          id="registerForm"
+          method="post"
+          role="form"
+          action="#"
+          th:action="@{/admin/register/save}"
+          th:object="${patient}"
+        >
+          <div>
+            <label>First Name</label>
+            <input
+              id="firstName"
+              name="firstName"
+              placeholder="Enter first name"
+              th:field="*{firstName}"
+              type="text"
+            />
+            <p
+              th:errors="*{firstName}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('firstName')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label>Last Name</label>
+            <input
+              id="lastName"
+              name="lastName"
+              placeholder="Enter last name"
+              th:field="*{lastName}"
+              type="text"
+            />
+            <p
+              th:errors="*{lastName}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('lastName')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label for="Date of Birth">Date of Birth</label>
+            <input
+              id="dob"
+              name="dob"
+              placeholder="DD/MM/YYYY"
+              th:field="*{dob}"
+              type="date"
+              data-date-format="dd/mm/yyyy" 
+            />
+            <p
+              th:errors="*{dob}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('dob')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label>PPSN</label>
+            <input
+              id="ppsn"
+              name="ppsn"
+              placeholder="0000000XX"
+              th:field="*{ppsn}"
+              type="text"
+            />
+            <p
+              th:errors="*{ppsn}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('ppsn')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label>Medical Card Holder?</label>
+            <div>
+              <input id="yesMedicalCard" type="radio" name="medicalCardHolder" th:field="*{medicalCardHolder}" value="true" />
+              <label>Yes</label><br />
+              <input id="noMedicalCard" type="radio" name="medicalCardHolder" th:field="*{medicalCardHolder}" value="false" />
+              <label>No</label><br />
+            </div>
+          </div>
+
+          <br>
+
+          <div>
+            <label>Insurance Coverage?</label>
+            <div>
+              <input id="yesInsured" type="radio" name="insured" th:field="*{insured}" value="true" />
+              <label for="yes">Yes</label><br />
+              <input id="noInsured" type="radio" name="insured" th:field="*{insured}" value="false" />
+              <label for="no">No</label><br />
+            </div>
+          </div>
+          
+          <br>
+
+          <div>
+            <label>Address</label>
+            <input 
+            id="address"
+            name="address"
+            placeholder="Enter home address"
+            th:field="*{address}"
+            type="text"
+            size="75"
+            />
+            <p
+            th:errors="*{address}"
+            class="text-danger"
+            th:if="${#fields.hasErrors('address')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label>Phone Number</label>
+            <input
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="08XXXXXXXX"
+              th:field="*{phoneNumber}"
+              type="text"
+            />
+            <p
+              th:errors="*{phoneNumber}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('phoneNumber')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <label>Email</label>
+            <input
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Enter email address"
+              th:field="*{email}"
+              type="email"
+            />
+            <p
+              th:errors="*{email}"
+              class="text-danger"
+              th:if="${#fields.hasErrors('email')}"
+            ></p>
+          </div>
+
+          <br>
+
+          <div>
+            <button type="submit">Register</button>
+          </div>
+          
+        </form>
+      </div>
+    </section>
+
+    <div>
+      <form action="#" th:action="@{/admin/dashboard}">
+          <label></label>
+          <br>
+          <input type="submit" value="Return to Dashboard">    
+      </form>
+  </div>
+  
+
   </body>
-</html> -->
+</html>
