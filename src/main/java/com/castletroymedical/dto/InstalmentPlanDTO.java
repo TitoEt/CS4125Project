@@ -55,11 +55,11 @@ public class InstalmentPlanDTO {
     }
 
     public int getMinInstalments() {
-        return this.minInstalments;
+        return InstalmentPlanDTO.minInstalments;
     }
 
     public int getMinBreakPeriod() {
-        return this.minBreakPeriod;
+        return InstalmentPlanDTO.minBreakPeriod;
     }
 
 }
