@@ -6,7 +6,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>Dashboard</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="dashboard.css" media="screen">
@@ -54,10 +54,9 @@
       </div></header>
     <section class="u-clearfix u-section-1" id="sec-aa7e">
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Find Patient</a> <!--search bar so admin can search by ppsn and email -->
-        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">List All Patients</a>
-        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">Register Patient</a>
-        <a href="https://nicepage.com/c/slider-website-templates" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-4">View Procedures</a>
+        <a href="#" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Find Patient</a> <!--search bar so admin can search by ppsn and email -->
+        <a th:href="@{/admin/viewAllPatients}" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">List All Patients</a>
+        <a th:href="@{/admin/registerPatient}" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">Register Patient</a>
       </div>
     </section>
   </div>
@@ -65,7 +64,7 @@
    </body> 
    
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-6d0a"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 casteltroymedical.com - All Rights Reserved.</p>
+        <p class="u-small-text u-text u-text-variant u-text-1"> © 2022 - 2022 castletroymedical.com - All Rights Reserved.</p>
       </div>
     </footer>
   

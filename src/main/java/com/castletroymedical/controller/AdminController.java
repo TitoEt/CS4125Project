@@ -21,7 +21,7 @@ public class AdminController {
     }
 
     // <ISHA> List all patients in a table
-    @GetMapping("/all-patients")
+    @GetMapping("/viewAllPatients")
     public String listRegisteredUsers(Model model){
         List<PatientDto> patients = patientService.findAllPatients();
         model.addAttribute("patients", patients);
@@ -31,5 +31,12 @@ public class AdminController {
     @RequestMapping("/dashboard")
     public String dashbaord(){
         return "admin-dashboard";
+    }
+
+    @GetMapping("/registerPatient")
+    public String showRegistrationForm(Model model) {
+        PatientDto patientDto = new PatientDto();
+        model.addAttribute("patient", patientDto);
+        return "register";
     }
 }

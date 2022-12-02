@@ -17,9 +17,11 @@ import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.service.BillService;
 import com.castletroymedical.service.PatientService;
+import com.castletroymedical.service.impl.HospitalProcedureServiceImpl;
 import com.castletroymedical.dto.BillDTO;
 import com.castletroymedical.dto.InstalmentPlanDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
+import com.castletroymedical.entity.PatientEntity;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -27,16 +29,15 @@ public class BillingController {
     @Autowired
     BillService billService;
     @Autowired
-    PatientService patientService; // TODO service gets patient and type
+    PatientService patientService; 
+    @Autowired
+    HospitalProcedureServiceImpl procedureService;
 
     @GetMapping("/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
-        model.addAttribute("invoiceDetails", new InvoiceDetailsDTO("name", ppsn, "private"));
-        
-        List<HospitalProcedureDto> procedures = new ArrayList<HospitalProcedureDto>(); // TODO get procedure list
-        procedures.add(new HospitalProcedureDto("Xray", 100));
-        procedures.add(new HospitalProcedureDto("Hip Surgery", 350));
-        procedures.add(new HospitalProcedureDto("Transplant", 480));
+        PatientEntity patient = patientService.getPatientByPpsn(ppsn).get();
+        model.addAttribute("invoiceDetails", new InvoiceDetailsDTO(patient.getName(), ppsn, patientService.getPatientType(patient)));
+        List<HospitalProcedureDto> procedures = procedureService.findAllProcedures();
         model.addAttribute("procedures", procedures);
         return "invoice-form";
     }
@@ -59,7 +60,6 @@ public class BillingController {
         return "cash-approval";
     }
 
-    // TODO Potential strategy??
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
     public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("bill", bill);
