@@ -1,6 +1,5 @@
 package com.castletroymedical.config;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,14 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain; 
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SpringSecurity {
-
+public class SpringSecurity{
     @Autowired
-    private UserDetailsService userDetailsService; 
+    private UserDetailsService userDetailsService;
 
     @Bean
     public static PasswordEncoder passwordEncoder(){
@@ -27,24 +25,13 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/").permitAll()
-                .requestMatchers("/stripe/**").permitAll()
-                .requestMatchers("/admin/**").permitAll()
-                .requestMatchers("/register/**").hasRole("ADMIN")
-                .requestMatchers("/hospital-procedure/**").hasRole("ADMIN");
-                // .and().
-                // formLogin(
-                //         form -> form
-                //                 .loginPage("/login")
-                //                 .loginProcessingUrl("/login")
-                //                 .defaultSuccessUrl("/users")
-                //                 .permitAll()
-                // ).logout(
-                //         logout -> logout
-                //                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                //                 .permitAll()
-                // );
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/stripe/**").permitAll()
+                .antMatchers("/admin/**").permitAll()
+                .antMatchers("/register/**").hasRole("ADMIN")
+                .antMatchers("/hospital-procedure/**").hasRole("ADMIN");
+               
         return http.build();
     }
 

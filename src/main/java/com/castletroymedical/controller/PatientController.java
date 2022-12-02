@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.castletroymedical.dto.PatientDto;
-import com.castletroymedical.entity.PatientEntity;
 import com.castletroymedical.service.PatientService;
 
 @RestController
 public class PatientController {
     PatientService patientService;
 
-    public PatientController(PatientService patientService){
+    public PatientController(PatientService patientService) {
         this.patientService = patientService;
     }
 
@@ -26,7 +25,7 @@ public class PatientController {
     }
 
     @PostMapping("/add-patient")
-    public void addPatient(@RequestBody PatientDto patient){
+    public void addPatient(@RequestBody PatientDto patient) {
         patientService.savePatient(patient);
     }
 }

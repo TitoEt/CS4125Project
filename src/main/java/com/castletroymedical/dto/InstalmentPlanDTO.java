@@ -4,8 +4,8 @@ public class InstalmentPlanDTO {
     private double total;
     private int numberInstalments;
     private int breakPeriod;
-    private final int minInstalments = 2;
-    private final int minBreakPeriod = 30;
+    private final static int MININSTALMENTS = 2;
+    private final static int MINBREAKPERIOD = 30;
 
     public InstalmentPlanDTO() {
     }
@@ -33,8 +33,8 @@ public class InstalmentPlanDTO {
     }
 
     public void setNumberInstalments(int numberInstalments) {
-        if(numberInstalments <= minInstalments) {
-            this.numberInstalments = minInstalments;
+        if(numberInstalments <= MININSTALMENTS) {
+            this.numberInstalments = MININSTALMENTS;
         }
         else {
             this.numberInstalments = numberInstalments;
@@ -46,8 +46,8 @@ public class InstalmentPlanDTO {
     }
 
     public void setBreakPeriod(int breakPeriod) {
-        if(breakPeriod <= minBreakPeriod) {
-            this.breakPeriod = minBreakPeriod;
+        if(breakPeriod <= MINBREAKPERIOD) {
+            this.breakPeriod = MINBREAKPERIOD;
         }
         else {
             this.breakPeriod = breakPeriod;
@@ -55,11 +55,11 @@ public class InstalmentPlanDTO {
     }
 
     public int getMinInstalments() {
-        return this.minInstalments;
+        return InstalmentPlanDTO.MININSTALMENTS;
     }
 
     public int getMinBreakPeriod() {
-        return this.minBreakPeriod;
+        return InstalmentPlanDTO.MINBREAKPERIOD;
     }
 
 }

@@ -34,6 +34,7 @@ public class InvoiceBuilder {
             case "insured": out = new InsuredInvoice(); break;
             case "medical card": out = new MedicalCardInvoice(); break;
             case "private": out = new PrivateInvoice(); break;
+            default: return out;
         }
         return out;
     }
@@ -69,6 +70,7 @@ public class InvoiceBuilder {
             case "wardBed":
                 buildWardBed(days);
                 break;
+            default: return;
         }
     }
 
@@ -86,7 +88,7 @@ public class InvoiceBuilder {
     }
 
     private double calculateChargeAmount() {
-        if(this.charges.size() == 0) {
+        if(this.charges.isEmpty()) {
             return this.invoice.getCharge();
         }
         else {

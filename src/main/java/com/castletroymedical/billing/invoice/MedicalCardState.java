@@ -15,6 +15,6 @@ public class MedicalCardState extends ModifierState{
     }
 
     public double calculateBedRate(double baseCost, int days) {
-        return baseCost - (baseCost * 0.45);
+        return baseCost * days * 0.45;
     }
 }

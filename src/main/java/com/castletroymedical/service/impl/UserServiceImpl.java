@@ -8,13 +8,13 @@ import java.util.Arrays;
 import com.castletroymedical.dto.PatientDto;
 import com.castletroymedical.dto.UserDto;
 import com.castletroymedical.entity.RoleEntity;
-import com.castletroymedical.entity.UserEntity; 
+import com.castletroymedical.entity.UserEntity;
 import com.castletroymedical.repository.RoleRepository;
 import com.castletroymedical.repository.UserRepository;
 import com.castletroymedical.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private RoleRepository roleRepository;
@@ -22,19 +22,19 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository,
-                           RoleRepository roleRepository,
-                           PatientServiceImpl patientService,
-                           PasswordEncoder passwordEncoder) {
+            RoleRepository roleRepository,
+            PatientServiceImpl patientService, PasswordEncoder passwordEncoder)
+    {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.patientService = patientService;
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void registerPatientUser(UserDto userDto, PatientDto patientDto){
+    public void registerPatientUser(UserDto userDto, PatientDto patientDto) {
         savePatientUser(userDto);
         patientService.savePatient(patientDto);
-        
+
     }
 
     public void savePatientUser(UserDto userDto) {
@@ -43,7 +43,8 @@ public class UserServiceImpl implements UserService{
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         String roleName = "ROLE_PATIENT";
         RoleEntity role = roleRepository.findByNameIgnoreCase(roleName);
-        if(role == null) role = checkRoleExist(roleName); 
+        if (role == null)
+            role = checkRoleExist(roleName);
         user.setRoles(Arrays.asList(role));
 
         userRepository.save(user);
@@ -62,17 +63,18 @@ public class UserServiceImpl implements UserService{
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         String roleName = "ROLE_ADMIN";
         RoleEntity role = roleRepository.findByNameIgnoreCase(roleName);
-        if(role == null) role = checkRoleExist(roleName); 
+        if (role == null)
+            role = checkRoleExist(roleName);
         user.setRoles(Arrays.asList(role));
 
         userRepository.save(user);
-        
+
     }
 
     @Override
     public void updatePatientUser(UserDto userDto) {
         savePatientUser(userDto);
-        
+
     }
 
     @Override
@@ -84,5 +86,5 @@ public class UserServiceImpl implements UserService{
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-    
+
 }
