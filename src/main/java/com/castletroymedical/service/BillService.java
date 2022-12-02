@@ -2,6 +2,8 @@ package com.castletroymedical.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.stereotype.Service;
 
 import com.castletroymedical.billing.InstalmentCalculator;
@@ -9,11 +11,15 @@ import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.ChargeDTO;
 import com.castletroymedical.dto.InstalmentDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
+import com.castletroymedical.repository.HospitalProcedureRepository;
 
 @Service
 public class BillService {
+    @Autowired
+    HospitalProcedureRepository procedureRepository;
+
     public double getProcedureCharge(String name) {
-        return 150; // TODO use repository
+       return procedureRepository.findByProcedureNameIgnoreCase(name).get().getBaseCharge();
     }
 
     public InvoiceBuilder createInvoiceBuilder(InvoiceDetailsDTO invoiceForm) {
