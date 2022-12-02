@@ -2,7 +2,9 @@
 var stripe = Stripe("pk_test_51LzLqMAjbSseX4yp7aLwDVsCQWugPNmLVtgiOvVTGTGAikl1tgHwHi0zxIDzWYc1SshKU52UMzwgjjkNltBtWHYE006yYmfuWD");
 
 // The items the customer wants to buy
-var purchase = document.getElementById("paymentAmount").innerHTML;
+var purchase = {
+  items: [{ id: "bill" }]
+};
 
 // Disable the button until we have Stripe set up on the page
 document.querySelector("button").disabled = true;
@@ -14,7 +16,6 @@ fetch("/create-payment-intent", {
   body: JSON.stringify(purchase)
 })
   .then(function(result) {
-    console.log(result.json);
     return result.json();
   })
   .then(function(data) {
@@ -82,12 +83,6 @@ var payWithCard = function(stripe, card, clientSecret) {
 // Shows a success message when the payment is complete
 var orderComplete = function(paymentIntentId) {
   loading(false);
-  document
-    .querySelector(".result-message a")
-    .setAttribute(
-      "href",
-      "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-    );
   document.querySelector(".result-message").classList.remove("hidden");
   document.querySelector("button").disabled = true;
 };
