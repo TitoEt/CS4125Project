@@ -5,16 +5,18 @@
      <title>View Bills</title>
      <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
      <link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
-      <!-- list of outstanding bills
+</head>
+<body>
+    <!-- list of outstanding bills
      for each bill card, either have a pay option or
-      request Installment plan option
-    
-     for request installment plan
-     after button has been clicked include logic for sending notification to 
-    admin request card-->
-      <button type= "button" onclick="alert('Installment plan requested')"> Request Installment Plan </button>
-<a href="stripe.html"><button>Pay Bill</button></a>
+      request Installment plan option --->
+    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+        <a th:href="@{/patient/dashboard}"><button>Back to Dashboard</button></a>
+    </div>
 
+    <p>Table of bills with pay button</p>
+    <a th:href="@{/patient/payBill}"><button>Pay Bill</button></a>
 
- </head>
+ </body>
+
  </html>

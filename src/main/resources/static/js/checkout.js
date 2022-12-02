@@ -3,7 +3,7 @@ var stripe = Stripe("pk_test_51LzLqMAjbSseX4yp7aLwDVsCQWugPNmLVtgiOvVTGTGAikl1tg
 
 // The items the customer wants to buy
 var purchase = {
-  items: [{ id: "xl-tshirt" }]
+  items: [{ id: "bill" }]
 };
 
 // Disable the button until we have Stripe set up on the page
@@ -83,12 +83,6 @@ var payWithCard = function(stripe, card, clientSecret) {
 // Shows a success message when the payment is complete
 var orderComplete = function(paymentIntentId) {
   loading(false);
-  document
-    .querySelector(".result-message a")
-    .setAttribute(
-      "href",
-      "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-    );
   document.querySelector(".result-message").classList.remove("hidden");
   document.querySelector("button").disabled = true;
 };

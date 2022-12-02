@@ -2,15 +2,16 @@
 <html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-     <title>View Bills</title>
-     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
-<link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
-      <!--cards with those two options, amybe with patient name etc options in the header
-        Completed will list complete transaction with date of completion and cost of bill
-        -->
-<form action="/action_page.php">
-<a href="outstandingbills.html"><button>Outstanding Bills</button></a>
-<button type= "button" onclick="alert('No completed Bills available')"> Completed Bills </button>
-</form>
- </head>
- </html>
+    <title>View Bills</title>
+    <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
+    <link rel="stylesheet" type="text/css" th:href="@{/css/global.css}" />
+</head>
+<body>
+    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+        <a th:href="@{/patient/dashboard}"><button>Back to Dashboard</button></a>
+    </div>
+    <!-- TODO have a list of all bills  -->
+    
+    <p>List of paid bills</p>
+</body>
+</html>

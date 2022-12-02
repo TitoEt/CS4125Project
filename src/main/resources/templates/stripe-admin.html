@@ -6,17 +6,17 @@
     <meta name="description" content="A demo of a card payment on Stripe" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/ico" th:href="@{../static/favicon.ico}"> 
-    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" th:href="@{/css/stripe.css}" />
     <script src="https://js.stripe.com/v3/"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
-    <script src="checkout.js" defer></script>    
+    <script  th:src="@{/js/checkout.js}" defer></script>      
   </head>
 
   <body>
     <!-- Display a payment form -->
     <form id="payment-form" action="/admin/dashboard" method="post">
       <h1><b>Stripe Payment Portal</b></h1>
-      <h2><b>Total to pay:<span th:text="${#numbers.formatCurrency(amount)}"></span></b></h2>
+      <h2><b>Total to pay:<span id="paymentAmount" th:text="${#numbers.formatCurrency(amount)}"></span></b></h2>
       <p>Please enter below, the email address you would like your receipt sent to.</p>  
       <input type="text" id="email" placeholder="name@example.com" />
       <div id="card-element"><!--Stripe.js injects the Card Element--></div>
@@ -27,7 +27,8 @@
       </button>
       <p id="card-error" role="alert"></p>
       <p class="result-message hidden">
-        Payment succeeded. 
+        Payment successful. 
+        <a th:href="@{/admin/dashboard}"> Return to dashboard</a>
       </p>
     </form>
   </body>

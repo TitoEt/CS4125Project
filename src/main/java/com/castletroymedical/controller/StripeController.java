@@ -15,11 +15,11 @@ import com.stripe.param.PaymentIntentCreateParams;
 @RestController
 
 public class StripeController {
-    
+  private static final int SERVICEFEE = 10;
   @PostMapping("/create-payment-intent")
     public CreatePaymentResponse createPaymentIntent(@RequestBody CreatePayment createPayment) throws StripeException {
          PaymentIntentCreateParams createParams = new PaymentIntentCreateParams.Builder()
-                .setAmount(15 * 100L)//create payment - payment calculator to be inserted here to calculate patients bill
+                .setAmount( SERVICEFEE* 100L)//create payment - payment calculator to be inserted here to calculate patients bill
                 .setCurrency("eur") 
                 .build();
       

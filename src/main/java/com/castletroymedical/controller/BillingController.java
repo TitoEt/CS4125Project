@@ -1,9 +1,9 @@
 package com.castletroymedical.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +32,8 @@ public class BillingController {
     PatientService patientService; // service gets patient and type
     @Autowired
     HospitalProcedureService procedureService;
+    @Value("${stripe.public.key}")
+    private Object stripePublicKey;
 
     @GetMapping("/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
@@ -65,7 +67,6 @@ public class BillingController {
         return "cash-approval";
     }
 
-    // TODO Potential strategy??
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
     public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
         model.addAttribute("bill", bill);
@@ -91,8 +92,9 @@ public class BillingController {
     
     @PostMapping("/payInitialInstalment")
     public String payInitialInstalment(@ModelAttribute BillDTO bill, Model model) {
+        model.addAttribute("stripePublicKey", stripePublicKey);
         model.addAttribute("amount", bill.getAmount());
-        return "stripe";
+        return "stripe-admin";
     }
 
 }
