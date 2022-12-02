@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
+<html style="font-size: 16px;" lang="en xmlns:th="http://www.thymeleaf.org""><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>View Bills</title>
@@ -10,8 +10,43 @@
     <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
         <a th:href="@{/patient/dashboard}"><button>Back to Dashboard</button></a>
     </div>
-    <!-- TODO have a list of all bills  -->
-    
-    <p>List of paid bills</p>
+    <div>
+        <div>
+            <h1> Hospital Procedures </h1>
+        </div>
+        <br>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Charge</th> 
+                        <th>Date Issued</th>
+                        <th>Due Date</th> 
+                        <th>Status</th> 
+                        <th>Date Paid</th>
+                        <th>Instalment Plan</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="bill: ${bills}"> 
+                        <td th:text="${bill.totalCharge}"></td>
+                        <td th:text="${procedure.dateIssued}"></td>
+                        <td th:text="${procedure.dueDate}"></td>
+                        <td th:text="${procedure.status}"></td>
+                        <td th:text="${procedure.datePaid}"></td>
+                        <td th:text="${procedure.instalmentPlan}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <form action="#" th:action="@{/patient/dashboard}">
+                <label></label>
+                <br>
+                <input type="submit" value="Return to Dasboard">    
+            </form>
+        </div>
+    </div>
+     
 </body>
 </html>

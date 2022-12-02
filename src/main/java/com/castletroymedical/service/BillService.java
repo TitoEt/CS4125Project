@@ -2,6 +2,7 @@ package com.castletroymedical.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -100,5 +101,12 @@ public class BillService {
 
         BillEntity b = billRepository.save(bill); 
         return b.getBillId();
+    }
+
+    public List<BillDTO> findAllPatientBills(String ppsn) {
+        List<BillEntity> bills = billRepository.findByPatientPpsn(ppsn);
+        return bills.stream()
+                .map((bill) -> mapBillEntityToDto(bill))
+                .collect(Collectors.toList());
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +9,21 @@
   <title>Admin Dashboard</title>
 </head>
 <body>
-  <div>
+  <div class="heading_1s">
     <h1>Admin Dashboard</h1>
-  </div>
-
+  </div> 
+  
   <div>
-    <form action="#" th:action="@{/admin/findPatient}">
-      <label></label>
-      <br>
-      <input type="submit" value="Find Patient">        
+    <form action="#" th:action="@{/admin/patientDetails/}">
+      <label> Search for patient </label>
+      <input type="text" id="ppsn" name="ppsn" th:value="${ppsn}" placeholder="Search patient by ppsn">
+      <input type="submit" value="Search">
+    </form>
+    <br>
+    <form action="#" th:action="@{/admin/generateInvoice/}">
+      <label> Search for invoice </label>
+      <input type="text" id="ppsn" name="ppsn" th:value="${ppsn}" placeholder="Input Patient PPSN for Invoice">
+      <input type="submit" value="Search">
     </form>
   
     <form action="#" th:action="@{/admin/allPatients}">

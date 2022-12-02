@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -26,13 +28,29 @@ public class SpringSecurity{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/patient/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/stripe/**").permitAll()
-                .antMatchers("/admin/**").permitAll()
-                .antMatchers("/register/**").hasRole("ADMIN")
-                .antMatchers("/hospital-procedure/**").hasRole("ADMIN");
+                .and().
+                formLogin(
+                        form -> form
+                                .loginPage("/")
+                                .loginProcessingUrl("/")
+                                .successHandler(AuthSuccessHandler())
+                                .permitAll()
+                ).logout(
+                        logout -> logout
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .permitAll()
+                );
                
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler AuthSuccessHandler(){
+        return new AuthSuccessHandler();
     }
 
     @Autowired
