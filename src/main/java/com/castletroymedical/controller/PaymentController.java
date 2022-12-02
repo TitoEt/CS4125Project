@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.castletroymedical.dto.BillDTO;
+import com.castletroymedical.dto.BillAmountDTO;
 import com.castletroymedical.service.PaymentService;
 
 
@@ -20,14 +20,14 @@ public class PaymentController {
     private Object stripePublicKey;
 
     @RequestMapping(value = "/cardPayment", method = RequestMethod.POST, params = "stripePayment")
-    public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
+    public String onlinePayment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("stripePublicKey", stripePublicKey);
         model.addAttribute("amount", bill.getAmount());
         return "stripe-admin";
     }
     
     @RequestMapping(value = "/cardPayment", method = RequestMethod.POST, params = "cardOnSite")
-    public String cardMachinePayment(@ModelAttribute BillDTO bill, Model model) {
+    public String cardMachinePayment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "card-approval";
     }   

@@ -22,6 +22,7 @@
 
     <br>
     <form action="#" th:action="@{/admin/payInitialInstalment}" th:object="${bill}" method="post">
+        <input type="hidden" th:value="${bill.billID}" name="billID">
         <input type="hidden" th:value="${bill.amount}" name="amount">
         <input type="submit" value="Agree Schedule and Make Initial Payment">
     </form>

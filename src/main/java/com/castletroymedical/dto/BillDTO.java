@@ -1,24 +1,30 @@
 package com.castletroymedical.dto;
 
-public class BillDTO { 
-    private double amount;
+import java.util.Date;
 
-    public BillDTO() {        
-    }
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public BillDTO(double amount) {
-        this.amount = amount;
-    }   
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BillDto {
+    private Long billId;
+    
+    private String patientPpsn;
 
-    public double getAmount() {
-        return this.amount;
-    }
+    Date dateIssued;
+    
+    Date dueDate;
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+    Date datePaid;
 
-    public String toString() {
-        return String.format("€%.2f", this.amount);
-    }
-}  
+    boolean instalmentPlan;
+
+    String status;
+
+    double totalCharge;
+}

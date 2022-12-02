@@ -1,8 +1,6 @@
 package com.castletroymedical.entity; 
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -44,16 +42,4 @@ public class PatientEntity {
      
     private boolean insured; 
 
-    //<ISHA> Each patient can have one or more bills
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "patient_bill",
-        joinColumns = {
-            @JoinColumn(name = "ppsn", referencedColumnName = "ppsn")
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name = "billId", referencedColumnName = "billId")
-        }
-    )
-    private List<BillEntity> bills = new ArrayList<>();
 }
