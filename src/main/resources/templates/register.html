@@ -10,24 +10,6 @@
 </head>
 <body>
 <section class='register' id='register'>
-  <div th:if="${param.success}">
-    <p>You've successfully registered to our app!</p>
-  </div>
-
-  <div>
-    <form method="post" role="form" th:action="@{/register/save}" th:object="${patient}">
-      
-      <div>
-        <label>First Name</label>
-        <input name="firstName"
-               placeholder="Enter first name"
-               th:field="*{firstName}"
-               type="text"
-        />
-        <p th:errors="*{firstName}" class="text-danger"
-           th:if="${#fields.hasErrors('firstName')}">
-        </p>
-    </div>
 
     <div>
       <h1>Register Patient Details</h1>

@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.castletroymedical.billing.InvoiceBuilder;
 import com.castletroymedical.dto.HospitalProcedureDto;
 import com.castletroymedical.service.BillService;
+import com.castletroymedical.service.ChargeService;
 import com.castletroymedical.service.HospitalProcedureService;
 import com.castletroymedical.service.PatientService;
+import com.castletroymedical.dto.BillAmountDTO;
 import com.castletroymedical.dto.BillDTO;
+import com.castletroymedical.dto.ChargeDTO;
 import com.castletroymedical.dto.InstalmentPlanDTO;
 import com.castletroymedical.dto.InvoiceDetailsDTO;
-import com.castletroymedical.dto.PatientDto;
+import com.castletroymedical.dto.PatientDto; 
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -34,6 +37,8 @@ public class BillingController {
     HospitalProcedureService procedureService;
     @Value("${stripe.public.key}")
     private Object stripePublicKey;
+    @Autowired
+    ChargeService chargeService;
 
     @GetMapping("/generateInvoice/{ppsn}")
     public String invoiceForm(Model model, @PathVariable("ppsn") String ppsn) {
@@ -46,36 +51,39 @@ public class BillingController {
     }
 
     @PostMapping("/displayInvoice")
-    public String displayInvoice(@ModelAttribute InvoiceDetailsDTO invoiceDetails, Model model){ 
+    public String displayInvoice(@ModelAttribute InvoiceDetailsDTO invoiceDetails, Model model){
         InvoiceBuilder builder = billService.createInvoiceBuilder(invoiceDetails);
-        model.addAttribute("invoiceDetails", invoiceDetails);
-        model.addAttribute("bill", new BillDTO(billService.calculateInvoice(builder)));
-        model.addAttribute("charges", billService.listCharges(builder));
+        List<ChargeDTO> charges = builder.getCharges();
+        
+        Long billID = billService.saveBill(builder.getInvoice().getCharge(), invoiceDetails); 
+        chargeService.saveListOfCharges(charges, billID);
 
-        // <ISHA> is this where i save it???????? Charges can't be saved without a bill ID
+        BillAmountDTO bill = new BillAmountDTO(builder.getInvoice().getCharge(), billID);
+        model.addAttribute("invoiceDetails", invoiceDetails);
+        model.addAttribute("bill", bill);
+        model.addAttribute("charges", charges);
 
         return "invoice";
-        // TODO save invidicual charges - decorators
     }
-
-    // TODO save invoice using service method (need ppsn)
-    // <ISHA> where's this supposed to be in the method above or below ????
     
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cash")
-    public String cashPayment(@ModelAttribute BillDTO bill, Model model) {
+    public String cashPayment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("amount", bill.getAmount());
         return "cash-approval";
     }
 
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "cardPayment")
-    public String onlinePayment(@ModelAttribute BillDTO bill, Model model) {
+    public String onlinePayment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("bill", bill);
         return "card-payment";
     }
 
     @RequestMapping(value = "/paymentMethod", method = RequestMethod.POST, params = "instalment")
-    public String instalment(@ModelAttribute BillDTO bill, Model model) {
+    public String instalment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("instalmentPlan", new InstalmentPlanDTO(bill.getAmount()));
+        BillDTO bd = billService.findBill(bill.getBillID());
+        bd.setInstalmentPlan(true);
+        billService.saveBill(bd);
         return "instalment-form";
     }
 
@@ -85,13 +93,13 @@ public class BillingController {
         double numberInstalments = instalmentPlan.getNumberInstalments();
         model.addAttribute("total", total);
         model.addAttribute("instalments", billService.listInstalments(total, numberInstalments, instalmentPlan.getBreakPeriod()));
-        model.addAttribute("bill", new BillDTO(billService.calculateInstalment(total, numberInstalments)));
+        model.addAttribute("bill", new BillAmountDTO(billService.calculateInstalment(total, numberInstalments)));
         // TODO save instalment plan
         return "instalment-plan";
     }
     
     @PostMapping("/payInitialInstalment")
-    public String payInitialInstalment(@ModelAttribute BillDTO bill, Model model) {
+    public String payInitialInstalment(@ModelAttribute BillAmountDTO bill, Model model) {
         model.addAttribute("stripePublicKey", stripePublicKey);
         model.addAttribute("amount", bill.getAmount());
         return "stripe-admin";

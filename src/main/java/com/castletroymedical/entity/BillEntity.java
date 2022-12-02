@@ -1,7 +1,6 @@
 package com.castletroymedical.entity;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -26,42 +25,22 @@ public class BillEntity {
     private PatientEntity patientPpsn;
 
     @Column(nullable = false)
-    Date dateIssued;
+    private Date dateIssued;
     
     @Column(nullable = false)
-    Date duedate;
+    private Date dueDate;
 
-    Date datePaid;
+    private Date datePaid;
 
-    boolean instalmentPlan;
-
-    @Column(nullable = false)
-    String status;
+    private boolean instalmentPlan;
 
     @Column(nullable = false)
-    double totalCharge;
+    private String status;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "bill_charges",
-        joinColumns = {
-            @JoinColumn(name = "billId", referencedColumnName = "billId")
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name = "chargeId", referencedColumnName = "chargeId")
-        }
-    )
-    private List<ChargeEntity> charges = new ArrayList<>();
+    @Column(nullable = false)
+    private double totalAmount;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "bill_instalment_payments",
-        joinColumns = {
-            @JoinColumn(name = "billId", referencedColumnName = "billId")
-        },
-        inverseJoinColumns = {
-            @JoinColumn(name = "paymentId", referencedColumnName = "paymentId")
-        }
-    )
-    private List<InstalmentPaymentEntity> instalmentPayments = new ArrayList<>();
+    @Transient
+    private List<ChargeEntity> charges;
+
 }

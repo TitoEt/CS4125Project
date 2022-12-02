@@ -19,12 +19,12 @@ public class ChargeEntity {
 
     @ManyToOne
     @JoinColumn(name = "billId")
-    private BillEntity billId;
+    private BillEntity billID;
 
     @Column(nullable = false)
-    private String chargeType;
+    private String description;
 
     @Column(nullable = false)
-    private double chargeAmount;
+    private double amount;
 
 }

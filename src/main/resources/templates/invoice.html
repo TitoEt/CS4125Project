@@ -28,6 +28,7 @@
         <label for="payment">Patient's Preferred Payment Method</label>
         <br>
         <input type="hidden" th:value="${bill.amount}" name="amount">
+        <input type="hidden" th:value="${bill.billID}" name="billID">
         <input type="submit" name="cash" value="Cash">
         <input type="submit" name="cardPayment" value="Card Payment">
         <input type="submit" name="instalment" value="Instalment">        

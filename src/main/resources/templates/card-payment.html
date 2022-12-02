@@ -10,6 +10,7 @@
 <body>
     <h2>Card Payment</h2>
     <form action="#" th:action="@{/admin/cardPayment}" th:object="${bill}" method="post">
+        <input type="hidden" th:value="${bill.billID}" name="billID">
         <input type="hidden" th:value="${bill.amount}" name="amount">
         <input type="submit" name="stripePayment" value="Pay by Stripe">
         <input type="submit" name="cardOnSite" value="Pay by card machine"> 
